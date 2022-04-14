@@ -6,7 +6,7 @@ function Demo() {
   return (
     <SafeAreaView>
       <View style={styles.Container}>
-        <Text style={styles.Name}>Demo</Text>
+        <Text style={styles.Name}>Hardik Kukadiya</Text>
       </View>
     </SafeAreaView>
   )
