@@ -5,6 +5,8 @@ import { images } from "../assets/images";
 import colors from '../theme/colors';
 
 export default class ComponentLifeCycle extends Component {
+
+    // give initial value to state
     constructor(props) {
         // console.log("1 constructor");
         super(props);
@@ -19,31 +21,35 @@ export default class ComponentLifeCycle extends Component {
         })
     }
 
+    //request to server
     componentDidMount = () => {
         // console.log("3 Component Did Mount");
         setInterval(() => this.tick(), 1000);
     }
 
+    //call when update in state
     componentDidUpdate = () => {
         // console.log("4 component Did Update");
     }
 
+    //call when leave screen/ component
     componentWillUnmount = () => {
         // console.log("5 Component Will Unmount");
     }
 
+    // call each time when state change
     render() {
         // console.log("2 Render");
         return (
             <SafeAreaView>
                 <View>
-                    <View style={styles.Card}>
+                    {/* <View style={styles.Card}>
                         <Image style={styles.Logo} source={images.IMG_React_Png} />
                         <Text style={styles.TitleName}>Component Life Cycle</Text>
-                    </View>
-                    <View style={{ borderColor: '#515151', borderWidth: normalize(2), marginVertical: normalize(1) }} />
+                    </View> */}
+                    {/* <View style={{ borderColor: '#515151', borderWidth: normalize(2), marginVertical: normalize(1) }} /> */}
                     <View style={styles.TimeBox}>
-                        <Text style={styles.Time}>{this.state.time.toLocaleTimeString()}</Text>
+                        <Text style={styles.Time}>{this.state.time.toString()}</Text>
                     </View>
                 </View>
             </SafeAreaView>
@@ -84,13 +90,14 @@ const styles = StyleSheet.create({
         margin: normalize(5)
     },
     TimeBox: {
-        backgroundColor: 'green',
+        backgroundColor: colors.blackTransparent,
         alignSelf: 'center',
         borderRadius: normalize(80)
     },
     Time: {
-        fontSize: normalize(20),
-        fontWeight: '700',
-        padding: normalize(10)
+        fontSize: normalize(16),
+        fontWeight: '800',
+        padding: normalize(10),
+        color: colors.extraLight
     },
 });
