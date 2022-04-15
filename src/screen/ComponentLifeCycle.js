@@ -38,10 +38,11 @@ export default class ComponentLifeCycle extends Component {
             <SafeAreaView>
                 <View>
                     <View style={styles.Card}>
-                        <Image style={styles.Logo} source={images.IMG_Medical} />
-                        <Text style={styles.TitleName}>Brahmani Medical Store - Surat</Text>
+                        <Image style={styles.Logo} source={images.IMG_React_Png} />
+                        <Text style={styles.TitleName}>Component Life Cycle</Text>
                     </View>
-                    <View style={styles.Container}>
+                    <View style={{ borderColor: '#515151', borderWidth: normalize(2), marginVertical: normalize(1) }} />
+                    <View style={styles.TimeBox}>
                         <Text style={styles.Time}>{this.state.time.toLocaleTimeString()}</Text>
                     </View>
                 </View>
@@ -51,15 +52,7 @@ export default class ComponentLifeCycle extends Component {
 };
 
 const styles = StyleSheet.create({
-    Container: {
-        backgroundColor: 'green',
-        alignSelf: 'center'
-    },
-    Time: {
-        fontSize: normalize(20),
-        fontWeight: '700',
-        padding: normalize(10)
-    },
+    
     Card: {
         margin: normalize(5),
         borderRadius: normalize(15),
@@ -76,18 +69,28 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     TitleName: {
-        fontSize: normalize(20),
+        fontSize: normalize(25),
         fontWeight: 'bold',
-        color: colors.appBlue,
+        color: colors.black,
         alignSelf: 'center',
         textAlign: 'center',
         marginHorizontal: normalize(5)
     },
     Logo: {
-        height: normalize(50),
-        width: normalize(50),
+        height: normalize(60),
+        width: normalize(60),
         alignSelf: 'center',
         borderRadius: normalize(50),
         margin: normalize(5)
+    },
+    TimeBox: {
+        backgroundColor: 'green',
+        alignSelf: 'center',
+        borderRadius: normalize(80)
+    },
+    Time: {
+        fontSize: normalize(20),
+        fontWeight: '700',
+        padding: normalize(10)
     },
 });

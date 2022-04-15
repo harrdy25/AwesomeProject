@@ -51,7 +51,8 @@ const colors = {
     gold1: '#d4af37',
     platinum: '#E5E4E2',
     gray4: "rgb(185,184,179)",
-    Insta: "#FD1D1D"
+    Insta: "#FD1D1D",
+    React: '#61DBFB'
 };
 
 export default colors;

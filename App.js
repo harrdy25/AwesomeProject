@@ -8,8 +8,8 @@ import ComponentLifeCycle from './src/screen/ComponentLifeCycle'
 export default function App() {
   return (
     <View>
-      {/* <MedicineData /> */}
-      <ComponentLifeCycle />
+      <MedicineData />
+      {/* <ComponentLifeCycle /> */}
     </View>
   )
 }
