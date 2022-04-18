@@ -6,6 +6,7 @@ import ComponentClass from './src/screen/ComponentClass'
 import Counter from './src/screen/Counter'
 import ComponenFunction from './src/screen/ComponenFunction'
 import InstaHomePage from './src/screen/InstaHomePage'
+import InstagramProfile from './src/screen/InstagramProfile'
 
 
 export default function App() {
@@ -17,7 +18,8 @@ export default function App() {
         <MedicineData />
         {/* <Counter /> */}
         {/* <ComponenFunction /> */}
-        <InstaHomePage />
+        {/* <InstaHomePage /> */}
+        <InstagramProfile />
       </ScrollView>
     </SafeAreaView>
   )
