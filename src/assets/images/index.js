@@ -4,6 +4,7 @@ export const images = {
     IMG_Medical: require("./Medical.png"),
 
     IMG_InstaText_Png: require('./Instagram.png'),
+    // IMG_HEART: require('./ic_heart.png'),
 
 
     IMG_LEFT_PNG: require('./Left.png'),

@@ -64,7 +64,8 @@ function InstaHomePage({ navigation }) {
                     <Image style={styles.ProfileImage} source={images.IMG_HARRDY} />
                 </TouchableOpacity>
                 <View style={{ flex: 1, alignSelf: 'center' }}>
-                    <TouchableOpacity onPress={() => navigation.navigate('InstagramProfile')}>
+                    <TouchableOpacity>
+                    {/* onPress={() => navigation.navigate('InstagramProfile')} */}
                         <Text style={styles.ProfileTitle}>Harrdy25__</Text>
                     </TouchableOpacity>
                     <TouchableOpacity>
@@ -113,13 +114,15 @@ function InstaHomePage({ navigation }) {
                     </View>
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.Likes}>Liked by <Text style={{ fontWeight: '800' }}>dr.nik_lakhani_ </Text> and </Text>
-                        <TouchableOpacity onPress={() => navigation.navigate('LikeList')}>
+                        <TouchableOpacity >
+                        {/* onPress={() => navigation.navigate('LikeList')} */}
                             <Text style={styles.LikesCount}> {item.isLike ? '2,511' : '2,510'} others </Text>
                         </TouchableOpacity>
                     </View>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
-                    <TouchableOpacity onPress={() => navigation.navigate('InstaComments')}>
+                    <TouchableOpacity> 
+                        {/* onPress={() => navigation.navigate('InstaComments')} */}
                         <Text style={styles.CommentName}>Harrdy25__
                             <Text style={styles.CommentsMsg}>A million likes will never be enough if you  don't like yourself.</Text>
                         </Text>
@@ -160,7 +163,8 @@ function InstaHomePage({ navigation }) {
             <View style={{ backgroundColor: colors.black }}>
 
                 <View style={{ flexDirection: 'row', marginBottom: normalize(10) }}>
-                    <TouchableOpacity style={{ flexDirection: 'row', flex: 1 }} onPress={() => navigation.navigate('InstagramProfile')}>
+                    <TouchableOpacity style={{ flexDirection: 'row', flex: 1 }} >
+                    {/* onPress={() => navigation.navigate('InstagramProfile')} */}
                         <Image style={styles.InstaPNG} source={images.IMG_InstaText_Png} />
                     </TouchableOpacity>
                     <View style={{ flexDirection: 'row' }}>
@@ -168,7 +172,8 @@ function InstaHomePage({ navigation }) {
                         <TouchableOpacity onPress={() => setModalVisiblePlus(true)}>
                             <Image style={styles.Plus} source={images.IMG_Pulss_png} />
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => navigation.navigate('InstaMessage')}>
+                        <TouchableOpacity >
+                        {/* onPress={() => navigation.navigate('InstaMessage')} */}
                             <Image style={styles.Plus} source={images.IMG_Chat_Png} />
                         </TouchableOpacity>
                     </View>
@@ -217,7 +222,7 @@ function InstaHomePage({ navigation }) {
                 onRequestClose={() => {
                     setModalVisiblePlus(!PlusmodalVisible);
                 }}>
-                <View style={styles.container}>
+                <View style={styles.container}>                  
                     <View>
                         <FlatList
                             data={PostPlus}
