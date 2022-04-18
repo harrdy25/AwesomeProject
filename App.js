@@ -1,19 +1,27 @@
 
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, SafeAreaView, Image, StyleSheet } from 'react-native'
 import React from 'react'
 import MedicineData from './src/screen/MedicineData'
-import ComponentLifeCycle from './src/screen/ComponentLifeCycle'
+import ComponentClass from './src/screen/ComponentClass'
 import Counter from './src/screen/Counter'
+import ComponenFunction from './src/screen/ComponenFunction'
+import InstaHomePage from './src/screen/InstaHomePage'
 
 
 export default function App() {
   return (
-    <View>
+    <SafeAreaView>
+      
       <ScrollView>
-        <ComponentLifeCycle />
+        {/* <ComponentClass /> */}
         <MedicineData />
-        <Counter />
+        {/* <Counter /> */}
+        {/* <ComponenFunction /> */}
+        <InstaHomePage />
       </ScrollView>
-    </View>
+    </SafeAreaView>
   )
-}
+};
+const styles = StyleSheet.create({
+ 
+})

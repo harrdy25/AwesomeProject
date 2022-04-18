@@ -11,7 +11,7 @@ const Data = [
     { id: 4, name: "Dupixent", price: "520", expiry: "2024", quantity: '05', },
     { id: 5, name: "Humira", price: "550", expiry: "2022", quantity: '22', },
     { id: 6, name: "Advil", price: "290", expiry: "2018", quantity: '08', },
-    { id: 7, name: "Genpril", price: "350", expiry: "2022", quantity: '09', },
+    { id: 7, name: "Genpril", price: "350", expiry: "2022", quantity: '20', },
     { id: 8, name: "Ecpirin", price: "250", expiry: "2018", quantity: '06', },
     { id: 9, name: "Halfprin", price: "580", expiry: "2025", quantity: '36', },
     { id: 10, name: "Nuprin", price: "450", expiry: "2017", quantity: '08', },
@@ -48,7 +48,7 @@ export default function MedicineData() {
                     <Text style={[styles.Medicine]}>{item.name}</Text>
                     <Text style={[styles.Medicine, { textAlign: 'center' }]}>{item.price}</Text>
                     <Text style={[item.expiry < 2020 ? styles.MedicineExpire : styles.Medicine, { textAlign: 'center' }]}>{item.expiry}</Text>
-                    <Text style={[styles.Medicine, { textAlign: 'center' }]}>{item.quantity}</Text>
+                    <Text style={[ item.quantity < 10 ? styles.MedicineExpire : styles.Medicine, { textAlign: 'center' }]}>{item.quantity}</Text>
                 </TouchableOpacity>
                 <View style={{ borderColor: '#515151', borderBottomWidth: StyleSheet.hairlineWidth, marginVertical: normalize(4) }} />
             </View>
@@ -73,7 +73,6 @@ export default function MedicineData() {
                     </TouchableOpacity>
                 </View>
                 <View style={{ borderColor: '#515151', borderWidth: normalize(1), marginVertical: normalize(1) }} />
-
                 <View style={{ flexDirection: 'row' }}>
                     <Text style={styles.IndexTitle}>No</Text>
                     <Text style={styles.MedicineTitle}>Name</Text>
@@ -82,7 +81,6 @@ export default function MedicineData() {
                     <Text style={styles.MedicineTitle}>Quantity</Text>
                 </View>
                 <View style={{ borderColor: '#515151', borderBottomWidth: normalize(2), marginVertical: normalize(5) }} />
-
                 <View>
                     <FlatList
                         data={Data}
@@ -106,7 +104,7 @@ export default function MedicineData() {
                     <Text style={[styles.Total, { flex: 3, }]}>{Sum}/-</Text>
                     <Text style={[styles.Total, { flex: 3, marginRight: normalize(30) }]}>{Qsum}</Text>
                 </View>
-                <View style={{ borderColor: '#515151', borderBottomWidth: normalize(2), marginVertical: normalize(5) }} />                
+                <View style={{ borderColor: '#515151', borderBottomWidth: normalize(2), marginVertical: normalize(5) }} />
             </View>
         </SafeAreaView>
     )
@@ -210,6 +208,6 @@ const styles = StyleSheet.create({
         fontSize: normalize(18),
         fontWeight: '700',
         color: colors.appBlue,
-        textAlign: 'right'
+        textAlign:'right'
     },
 });

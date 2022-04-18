@@ -4,7 +4,7 @@ import { normalize } from "../utils";
 import { images } from "../assets/images";
 import colors from '../theme/colors';
 
-export default class ComponentLifeCycle extends Component {
+export default class ComponentClass extends Component {
 
     // give initial value to state
     constructor(props) {
