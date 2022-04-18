@@ -14,7 +14,7 @@ export default function App() {
       
       <ScrollView>
         {/* <ComponentClass /> */}
-        {/* <MedicineData /> */}
+        <MedicineData />
         {/* <Counter /> */}
         {/* <ComponenFunction /> */}
         <InstaHomePage />

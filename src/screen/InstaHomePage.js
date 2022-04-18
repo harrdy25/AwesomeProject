@@ -26,7 +26,6 @@ const PostPlus = [
 ];
 
 function InstaHomePage({ navigation }) {
-    const [modalVisible, setModalVisible] = useState(false);
     const [PlusmodalVisible, setModalVisiblePlus] = useState(false);
 
     const createTwoButtonAlert = () =>
