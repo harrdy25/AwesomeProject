@@ -47,6 +47,9 @@ export const images = {
     IMG_Covide19_Png: require('./Covid19.png'),
     IMG_Archive_Png: require('./Archive.png'),
     IMG_Insights_Png: require('./insight.png'),
+    IMG_Puls_White_png: require('./PlusWhite.png'),
+    IMG_CLOSE_GRAY: require('./Close.png'),
+    IMG_Click_Png: require('./ClickDone.png'),
 
 
 };

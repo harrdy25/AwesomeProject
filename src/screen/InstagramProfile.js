@@ -69,24 +69,16 @@ function InstagramProfile({ navigation }) {
     const [MenumodalVisible, setModalVisibleMenu] = useState(false);
     const [EditmodalVisible, setModalVisibleEdit] = useState(false);
 
-    const renderItem = ({ item }) => {
-        return (
-            <Item item={item} />
-        );
-    };
-    const Item = ({ item, }) => (
+
+    const renderItem = ({ item, }) => (
         <View style={styles.PostImage}>
             <TouchableOpacity style={[styles.item]}>
                 <Image style={styles.Image} source={item.image} />
             </TouchableOpacity>
         </View>
     );
-    const renderStory = ({ item }) => {
-        return (
-            <Story item={item} />
-        );
-    };
-    const Story = ({ item, }) => (
+
+    const renderStory = ({ item, }) => (
         <View>
             <View style={styles.StoryImg}>
                 <TouchableOpacity style={[styles.item]}>
@@ -99,12 +91,7 @@ function InstagramProfile({ navigation }) {
         </View >
     );
 
-    const MenuSetting = ({ item }) => {
-        return (
-            <Menu item={item} />
-        );
-    };
-    const Menu = ({ item, }) => (
+    const MenuSetting = ({ item, }) => (
         <View style={styles.PostImg}>
             <TouchableOpacity style={[styles.item], { flexDirection: 'row' }}>
                 <Image style={styles.MenuImage} source={item.image} />
@@ -113,12 +100,8 @@ function InstagramProfile({ navigation }) {
             <View style={{ borderBottomColor: '#515151', borderBottomWidth: normalize(1), marginLeft: normalize(50), marginVertical: normalize(10) }}></View>
         </View>
     );
-    const renderPost = ({ item }) => {
-        return (
-            <Posting item={item} />
-        );
-    };
-    const Posting = ({ item, }) => (
+
+    const renderPost = ({ item, }) => (
         <View style={styles.PostImg}>
             <TouchableOpacity style={[styles.item], { flexDirection: 'row' }}>
                 <Image style={styles.PostImagePlus} source={item.image} />
@@ -127,12 +110,8 @@ function InstagramProfile({ navigation }) {
             <View style={{ borderBottomColor: '#515151', borderBottomWidth: normalize(1), marginLeft: normalize(50), marginVertical: normalize(10) }}></View>
         </View>
     );
-    const renderEditProfile = ({ item }) => {
-        return (
-            <Editpic item={item} />
-        );
-    };
-    const Editpic = ({ item, }) => (
+
+    const renderEditProfile = ({ item, }) => (
         <View style={styles.PostImg}>
             <TouchableOpacity style={[styles.item], { flexDirection: 'row' }}>
                 <Text style={styles.EditBio}>{item.title}</Text>
@@ -142,12 +121,8 @@ function InstagramProfile({ navigation }) {
 
         </View>
     );
-    const renderInfo = ({ item }) => {
-        return (
-            <Info item={item} />
-        );
-    };
-    const Info = ({ item, }) => (
+
+    const renderInfo = ({ item, }) => (
         <View style={styles.PostImg}>
             <TouchableOpacity style={[styles.item], { flexDirection: 'row' }}>
                 <Text style={styles.Info}>{item.title}</Text>
@@ -161,7 +136,7 @@ function InstagramProfile({ navigation }) {
     return (
         <SafeAreaView style={{ backgroundColor: colors.white }}>
             <View style={{ backgroundColor: colors.black }}>
-                <View style={{ flexDirection: 'row',}}>
+                <View style={{ flexDirection: 'row', }}>
                     <TouchableOpacity style={{ flexDirection: 'row', flex: 1 }} onPress={() => setModalVisible(true)}>
                         <Text style={styles.ProfileName}>harrdy25__</Text>
                         <Image style={styles.DownArrow} source={images.IMG_Down_Arroww} />
@@ -217,8 +192,7 @@ function InstagramProfile({ navigation }) {
                         <TouchableOpacity style={{ flex: 1 }} onPress={() => navigation.navigate('CloseFriends')}>
                             <Text style={styles.Tools}>Insights</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{ flex: 1 }}
-                            onPress={() => setModalVisible(!modalVisible)}>
+                        <TouchableOpacity style={{ flex: 1 }}>
                             <Text style={styles.Tools}>Contact</Text>
                         </TouchableOpacity>
                     </View>
@@ -385,7 +359,7 @@ function InstagramProfile({ navigation }) {
                             <View style={{ borderBottomColor: '#515151', borderBottomWidth: normalize(1), marginTop: normalize(10) }} />
                             <ScrollView>
                                 <TouchableOpacity style={{ marginTop: normalize(15) }}>
-                                    <Image style={styles.EditProfilePic} source={images.IMG_ADULT7} />
+                                    <Image style={styles.EditProfilePic} source={images.IMG_HARRDY} />
                                     <Text style={styles.EditphotoModal}>Change profile photo</Text>
                                 </TouchableOpacity>
                                 <View style={{ borderBottomColor: '#515151', borderBottomWidth: normalize(1), marginBottom: normalize(20) }} />
