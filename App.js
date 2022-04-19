@@ -7,23 +7,24 @@ import Counter from './src/screen/Counter'
 import ComponenFunction from './src/screen/ComponenFunction'
 import InstaHomePage from './src/screen/InstaHomePage'
 import InstagramProfile from './src/screen/InstagramProfile'
+import Calculator from './src/screen/Calculator'
 
 
 export default function App() {
   return (
-    <SafeAreaView>
-      
-      <ScrollView>
+      <View style={{ flex: 1 }}>
+
         {/* <ComponentClass /> */}
-        <MedicineData />
+        {/* <MedicineData /> */}
         {/* <Counter /> */}
         {/* <ComponenFunction /> */}
         {/* <InstaHomePage /> */}
-        <InstagramProfile />
-      </ScrollView>
-    </SafeAreaView>
+        {/* <InstagramProfile /> */}
+        <Calculator />
+
+      </View>
   )
 };
 const styles = StyleSheet.create({
- 
+
 })

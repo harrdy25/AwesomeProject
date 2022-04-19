@@ -72,7 +72,7 @@ function InstagramProfile({ navigation }) {
 
     const renderItem = ({ item, }) => (
         <View style={styles.PostImage}>
-            <TouchableOpacity style={[styles.item]}>
+            <TouchableOpacity>
                 <Image style={styles.Image} source={item.image} />
             </TouchableOpacity>
         </View>
