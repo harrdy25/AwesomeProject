@@ -5,7 +5,7 @@ import { normalize } from '../utils';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { images } from '../assets/images';
 
-const Data = ['AC', 'C', '%', '/', '7', '8', '9', '*', '4', '5', '6', '-', '1', '2', '3', '+', '+/-', '0', '.', '='];
+const Data = ['AC', 'C', '%', '÷', '7', '8', '9', 'x', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '='];
 
 function Calculator() {
 
@@ -16,7 +16,7 @@ function Calculator() {
 
         let lastArr = currentNumber[currentNumber.length - 1];
 
-        if (lastArr === '/' || lastArr === '*' || lastArr === '-' || lastArr === '+' || lastArr === '.') {
+        if (lastArr === '÷' || lastArr === 'x' || lastArr === '-' || lastArr === '+' || lastArr === '.') {
             setCurrentNumber(currentNumber)
             return
         }
@@ -28,7 +28,7 @@ function Calculator() {
     }
 
     function handleInput(buttonPressed) {
-        if (buttonPressed === '+' || buttonPressed === '-' || buttonPressed === '*' || buttonPressed === '/') {
+        if (buttonPressed === '+' || buttonPressed === '-' || buttonPressed === 'x' || buttonPressed === '÷') {
             setCurrentNumber(currentNumber + buttonPressed)
             return
         }
@@ -58,14 +58,14 @@ function Calculator() {
                 <Image style={styles.Logo} source={images.IMG_React_Png} />
                 <Text style={styles.TitleName}>Basic Calculator</Text>
             </View>
-            <View style={{ flex: 1, backgroundColor: colors.black1 }}>
+            <View style={{ flex: 1, backgroundColor: '#524341'}}>
                 <Text style={styles.Result}>{currentNumber}</Text>
             </View>
             <View style={styles.ButtonBox}>
                 {Data.map((item) => {
                     return (
-                        <TouchableOpacity style={item === '/' || item === '*' || item === '-' || item === '+' || item === '=' ? styles.OpratorButton : styles.Button 
-                        && item === 'AC' || item === 'C' || item === '%' ? styles.OpratorButtonAC : styles.Button } onPress={() => handleInput(item)}>
+                        <TouchableOpacity style={item === '÷' || item === 'x' || item === '-' || item === '+' || item === '=' ? styles.OpratorButton : styles.Button 
+                        && item === 'AC' || item === 'C' || item === '%' ? styles.OpratorButtonAC : styles.Button && item === '0' ? styles.ButtonZero : styles.Button} onPress={() => handleInput(item)}>
                             <Text style={styles.Text}>{item}</Text>
                         </TouchableOpacity>
                     )
@@ -129,8 +129,8 @@ const styles = StyleSheet.create({
         flex: 2,
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: colors.black,
-        backgroundColor: colors.gray,
-        borderRadius: normalize(20)
+        backgroundColor: '#887d7c',
+        // borderRadius: normalize(20)
     },
     OpratorButton: {
         alignItems: 'center',
@@ -140,8 +140,8 @@ const styles = StyleSheet.create({
         flex: 2,
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: colors.black,
-        backgroundColor: colors.gold1,
-        borderRadius: normalize(20)
+        backgroundColor: '#ff9f08',
+        // borderRadius: normalize(20)
     },
     OpratorButtonAC: {
         alignItems: 'center',
@@ -151,8 +151,19 @@ const styles = StyleSheet.create({
         flex: 2,
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: colors.black,
-        backgroundColor: colors.silver,
-        borderRadius: normalize(20)
+        backgroundColor: '#665655',
+        // borderRadius: normalize(20)
+    },
+    ButtonZero: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        minWidth: '50%',
+        minHeight: '18%',
+        flex: 2,
+        borderWidth: StyleSheet.hairlineWidth,
+        borderColor: colors.black,
+        backgroundColor: '#887d7c',
+        // borderRadius: normalize(20)
     },
     Text: {
         fontSize: normalize(30),
