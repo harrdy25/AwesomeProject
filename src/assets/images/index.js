@@ -55,5 +55,8 @@ export const images = {
     IMG_VideoCamera_PNG: require('./VideoCam.png'),
     IMG_FlagIcon_PNG: require('./Flag.png'),
     IMG_Round_Png: require('./Round.png'),
+    IMG_Down_Arroww: require('./Down.png'),
+
+    IMG_InstaPop_Png: require('./InstaPop.png'),
 
 };

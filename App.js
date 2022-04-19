@@ -20,8 +20,8 @@ export default function App() {
         {/* <Counter /> */}
         {/* <ComponenFunction /> */}
         {/* <InstaHomePage /> */}
-        <InstagramProfile />
-        {/* <Calculator /> */}
+        {/* <InstagramProfile /> */}
+        <Calculator />
         {/* <InstaChat /> */}
         {/* <ChatDetails /> */}
     </View>

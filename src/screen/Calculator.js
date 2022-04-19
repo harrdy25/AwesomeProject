@@ -5,7 +5,7 @@ import { normalize } from '../utils';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { images } from '../assets/images';
 
-const Data = ['AC', '+/-', '%', '/', '7', '8', '9', '*', '4', '5', '6', '-', '1', '2', '3', '+', 'C', '0', '.', '='];
+const Data = ['AC', 'C', '%', '/', '7', '8', '9', '*', '4', '5', '6', '-', '1', '2', '3', '+', '+/-', '0', '.', '='];
 
 function Calculator() {
 
@@ -64,7 +64,8 @@ function Calculator() {
             <View style={styles.ButtonBox}>
                 {Data.map((item) => {
                     return (
-                        <TouchableOpacity style={item === '/' || item === '*' || item === '-' || item === '+' || item === '=' ? styles.OpratorButton : styles.Button} onPress={() => handleInput(item)}>
+                        <TouchableOpacity style={item === '/' || item === '*' || item === '-' || item === '+' || item === '=' ? styles.OpratorButton : styles.Button 
+                        && item === 'AC' || item === 'C' || item === '%' ? styles.OpratorButtonAC : styles.Button } onPress={() => handleInput(item)}>
                             <Text style={styles.Text}>{item}</Text>
                         </TouchableOpacity>
                     )
@@ -141,7 +142,17 @@ const styles = StyleSheet.create({
         borderColor: colors.black,
         backgroundColor: colors.gold1,
         borderRadius: normalize(20)
-
+    },
+    OpratorButtonAC: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        minWidth: '25%',
+        minHeight: '18%',
+        flex: 2,
+        borderWidth: StyleSheet.hairlineWidth,
+        borderColor: colors.black,
+        backgroundColor: colors.silver,
+        borderRadius: normalize(20)
     },
     Text: {
         fontSize: normalize(30),

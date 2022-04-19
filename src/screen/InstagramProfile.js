@@ -139,6 +139,7 @@ function InstagramProfile({ navigation }) {
                 <View style={{ flexDirection: 'row', }}>
                     <TouchableOpacity style={{ flexDirection: 'row', flex: 1 }} onPress={() => setModalVisible(true)}>
                         <Text style={styles.ProfileName}>harrdy25__</Text>
+                        <Image style={styles.Populer} source={images.IMG_InstaPop_Png} />
                         <Image style={styles.DownArrow} source={images.IMG_Down_Arroww} />
                     </TouchableOpacity>
                     <View style={{ flexDirection: 'row' }}>
@@ -414,12 +415,19 @@ const styles = StyleSheet.create({
 
     },
     DownArrow: {
-        height: normalize(30),
-        width: normalize(30),
-        tintColor: colors.white,
+        height: normalize(20),
+        width: normalize(20),
+        tintColor: colors.gray,
         marginLeft: normalize(5),
         marginTop: normalize(10)
 
+    },
+    Populer: {
+        height: normalize(20),
+        width: normalize(20),
+        tintColor: colors.appBlue,
+        marginLeft: normalize(5),
+        alignSelf: 'center'
     },
     Plus: {
         height: normalize(30),
