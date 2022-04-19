@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
         width: normalize(50),
     },
     Result: {
-        fontSize: normalize(30),
+        fontSize: normalize(50),
         fontWeight: '700',
         position: 'absolute',
         bottom: normalize(0),
@@ -118,27 +118,30 @@ const styles = StyleSheet.create({
         height: '50%',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        flex: 1
+        flex: 1,
     },
     Button: {
         alignItems: 'center',
         justifyContent: 'center',
         minWidth: '25%',
-        minHeight: '19%',
+        minHeight: '18%',
         flex: 2,
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: colors.black,
         backgroundColor: colors.gray,
+        borderRadius: normalize(20)
     },
     OpratorButton: {
         alignItems: 'center',
         justifyContent: 'center',
         minWidth: '25%',
-        minHeight: '19%',
+        minHeight: '18%',
         flex: 2,
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: colors.black,
-        backgroundColor: colors.gold1
+        backgroundColor: colors.gold1,
+        borderRadius: normalize(20)
+
     },
     Text: {
         fontSize: normalize(30),

@@ -50,6 +50,10 @@ export const images = {
     IMG_Puls_White_png: require('./PlusWhite.png'),
     IMG_CLOSE_GRAY: require('./Close.png'),
     IMG_Click_Png: require('./ClickDone.png'),
-
+    IMG_About_Png: require('./About.png'),
+    IMG_CAMERAA_PNG: require('./Camera.png'),
+    IMG_VideoCamera_PNG: require('./VideoCam.png'),
+    IMG_FlagIcon_PNG: require('./Flag.png'),
+    IMG_Round_Png: require('./Round.png'),
 
 };
