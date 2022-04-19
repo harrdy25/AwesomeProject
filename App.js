@@ -10,6 +10,12 @@ import InstagramProfile from './src/screen/InstagramProfile'
 import Calculator from './src/screen/Calculator'
 import InstaChat from './src/screen/InstaChat'
 import ChatDetails from './src/screen/ChatDetails'
+import Insights from './src/screen/Insights'
+import DiscoverPeople from './src/screen/DiscoverPeople'
+import CloseFriends from './src/screen/CloseFriends'
+import Followers from './src/screen/Followers'
+import InstaComments from './src/screen/InstaComments'
+import InstaMessage from './src/screen/InstaMessage'
 
 
 export default function App() {
@@ -24,6 +30,12 @@ export default function App() {
         <Calculator />
         {/* <InstaChat /> */}
         {/* <ChatDetails /> */}
+        {/* <Insights /> */}
+        {/* <DiscoverPeople /> */}
+        {/* <CloseFriends /> */}
+        {/* <Followers /> */}
+        {/* <InstaComments /> */}
+        {/* <InstaMessage /> */}
     </View>
   )
 };

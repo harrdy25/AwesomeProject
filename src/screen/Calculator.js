@@ -5,7 +5,7 @@ import { normalize } from '../utils';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { images } from '../assets/images';
 
-const Data = ['AC', 'C', '%', '÷', '7', '8', '9', 'x', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '='];
+const Data = ['AC', 'C', '%', '/', '7', '8', '9', '*', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '='];
 
 function Calculator() {
 
@@ -16,7 +16,7 @@ function Calculator() {
 
         let lastArr = currentNumber[currentNumber.length - 1];
 
-        if (lastArr === '÷' || lastArr === 'x' || lastArr === '-' || lastArr === '+' || lastArr === '.') {
+        if (lastArr === '/' || lastArr === '*' || lastArr === '-' || lastArr === '+' || lastArr === '.') {
             setCurrentNumber(currentNumber)
             return
         }
@@ -28,7 +28,7 @@ function Calculator() {
     }
 
     function handleInput(buttonPressed) {
-        if (buttonPressed === '+' || buttonPressed === '-' || buttonPressed === 'x' || buttonPressed === '÷') {
+        if (buttonPressed === '/' || buttonPressed === '-' || buttonPressed === '*' || buttonPressed === '÷') {
             setCurrentNumber(currentNumber + buttonPressed)
             return
         }
@@ -64,7 +64,7 @@ function Calculator() {
             <View style={styles.ButtonBox}>
                 {Data.map((item) => {
                     return (
-                        <TouchableOpacity style={item === '÷' || item === 'x' || item === '-' || item === '+' || item === '=' ? styles.OpratorButton : styles.Button 
+                        <TouchableOpacity style={item === '/' || item === '*' || item === '-' || item === '+' || item === '=' ? styles.OpratorButton : styles.Button 
                         && item === 'AC' || item === 'C' || item === '%' ? styles.OpratorButtonAC : styles.Button && item === '0' ? styles.ButtonZero : styles.Button} onPress={() => handleInput(item)}>
                             <Text style={styles.Text}>{item}</Text>
                         </TouchableOpacity>
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     Card: {
         margin: normalize(5),
         borderRadius: normalize(15),
-        backgroundColor: colors.blackTransparent,
+        backgroundColor: '#665655',
         shadowColor: colors.black,
         shadowOffset: {
             width: 0.5,

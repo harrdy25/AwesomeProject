@@ -4,6 +4,8 @@ export const images = {
     IMG_Medical: require("./Medical.png"),
 
     IMG_InstaText_Png: require('./Instagram.png'),
+    IMG_InstaPop_Png: require('./InstaPop.png'),
+    IMG_FACEBOOK: require('./Facebook.png'),
     // IMG_HEART: require('./ic_heart.png'),
 
     // HRK
@@ -56,7 +58,10 @@ export const images = {
     IMG_FlagIcon_PNG: require('./Flag.png'),
     IMG_Round_Png: require('./Round.png'),
     IMG_Down_Arroww: require('./Down.png'),
-
-    IMG_InstaPop_Png: require('./InstaPop.png'),
+    IMG_CROSSMARK: require('./Cross.png'), 
+    IMG_BOTTOM_SEARCH: require('./Search.png'),
+    IMG_UpDownArrow_Png: require('./UpDown.png'),
+    IMG_Hastag_Png: require('./Hastag.png'),
+    IMG_FILTER: require('./Filter.png'),
 
 };
