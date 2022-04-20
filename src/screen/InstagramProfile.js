@@ -5,6 +5,7 @@ import { normalize } from '../utils';
 import { images } from '../assets/images/index';
 import colors from '../theme/colors';
 import { ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
+
 const Post = [
     { id: 1, image: images.IMG_HVK1 },
     { id: 2, image: images.IMG_HARRDY },

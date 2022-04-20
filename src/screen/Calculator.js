@@ -5,67 +5,66 @@ import { normalize } from '../utils';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { images } from '../assets/images';
 
-const Data = ['AC', 'C', '%', '/', '7', '8', '9', '*', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '='];
+const Data = ['AC', 'DEL', '%', '/', '7', '8', '9', '*', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '='];
 
-function Calculator() {
+function Calcu() {
 
     const [currentNumber, setCurrentNumber] = useState('');
-    const [lastNumber, setLastNumber] = useState('');
 
-    function calculator() {
+    const handleOprator = (Oprator) => {
+        setCurrentNumber(currentNumber + Oprator);
+    };
 
-        let lastArr = currentNumber[currentNumber.length - 1];
+    const handleDelete = () => {
+        setCurrentNumber(currentNumber.substring(0, currentNumber.length - 1))
+    };
 
-        if (lastArr === '/' || lastArr === '*' || lastArr === '-' || lastArr === '+' || lastArr === '.') {
-            setCurrentNumber(currentNumber)
-            return
-        }
-        else {
-            let result = eval(currentNumber).toString();
+    const handleClear = () => {
+        setCurrentNumber('');
+    };
+
+    const handleCalcutat = () => {
+        if (currentNumber !== '') {
+            let result = eval(currentNumber);
             setCurrentNumber(result)
-            return
         }
     }
-
-    function handleInput(buttonPressed) {
-        if (buttonPressed === '/' || buttonPressed === '-' || buttonPressed === '*' || buttonPressed === '÷') {
-            setCurrentNumber(currentNumber + buttonPressed)
-            return
-        }
-        else if (buttonPressed === 1 || buttonPressed === 2 || buttonPressed === 3 || buttonPressed === 4 || buttonPressed === 5 ||
-            buttonPressed === 6 || buttonPressed === 7 || buttonPressed === 8 || buttonPressed === 9 || buttonPressed === 0 || buttonPressed === '.') {
-
-        }
-        switch (buttonPressed) {
-            case 'AC':
-                setCurrentNumber(currentNumber.substring(0, (currentNumber.length - 1)))
-                return
-            case 'C':
-                setLastNumber('')
-                setCurrentNumber('')
-                return
-            case '=':
-                setLastNumber(currentNumber + '=')
-                calculator()
-                return
-        }
-        setCurrentNumber(currentNumber + buttonPressed)
-    }
-
+    
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.Card}>
                 <Image style={styles.Logo} source={images.IMG_React_Png} />
                 <Text style={styles.TitleName}>Basic Calculator</Text>
             </View>
-            <View style={{ flex: 1, backgroundColor: '#524341'}}>
+            <View style={{ flex: 1, backgroundColor: '#524342'}}>               
                 <Text style={styles.Result}>{currentNumber}</Text>
             </View>
             <View style={styles.ButtonBox}>
                 {Data.map((item) => {
                     return (
+                    item === '/' || item === '*' || item === '-' || item === '+' || item === '%' ?
                         <TouchableOpacity style={item === '/' || item === '*' || item === '-' || item === '+' || item === '=' ? styles.OpratorButton : styles.Button 
-                        && item === 'AC' || item === 'C' || item === '%' ? styles.OpratorButtonAC : styles.Button && item === '0' ? styles.ButtonZero : styles.Button} onPress={() => handleInput(item)}>
+                        && item === 'AC' || item === 'DEL' || item === '%' ? styles.OpratorButtonAC : styles.Button && item === '0' ? styles.ButtonZero : styles.Button} onPress={() => handleOprator(item)}>
+                            <Text style={styles.Text}>{item}</Text>
+                        </TouchableOpacity>
+                        : item === 'AC' ? 
+                        <TouchableOpacity style={item === '/' || item === '*' || item === '-' || item === '+' || item === '=' ? styles.OpratorButton : styles.Button 
+                        && item === 'AC' || item === 'DEL' || item === '%' ? styles.OpratorButtonAC : styles.Button && item === '0' ? styles.ButtonZero : styles.Button} onPress={() => handleClear()}>
+                            <Text style={styles.Text}>{item}</Text>
+                        </TouchableOpacity>
+                        : item === 'DEL' ? 
+                        <TouchableOpacity style={item === '/' || item === '*' || item === '-' || item === '+' || item === '=' ? styles.OpratorButton : styles.Button 
+                        && item === 'AC' || item === 'DEL' || item === '%' ? styles.OpratorButtonAC : styles.Button && item === '0' ? styles.ButtonZero : styles.Button} onPress={() => handleDelete()}>
+                            <Text style={styles.Text}>{item}</Text>
+                        </TouchableOpacity>
+                        : item === '=' ? 
+                        <TouchableOpacity style={item === '/' || item === '*' || item === '-' || item === '+' || item === '=' ? styles.OpratorButton : styles.Button 
+                        && item === 'AC' || item === 'DEL' || item === '%' ? styles.OpratorButtonAC : styles.Button && item === '0' ? styles.ButtonZero : styles.Button} onPress={() => handleCalcutat()}>
+                            <Text style={styles.Text}>{item}</Text>
+                        </TouchableOpacity>
+                        : 
+                        <TouchableOpacity style={item === '/' || item === '*' || item === '-' || item === '+' || item === '=' ? styles.OpratorButton : styles.Button 
+                        && item === 'AC' || item === 'DEL' || item === '%' ? styles.OpratorButtonAC : styles.Button && item === '0' ? styles.ButtonZero : styles.Button} onPress={() => handleOprator(item) }>
                             <Text style={styles.Text}>{item}</Text>
                         </TouchableOpacity>
                     )
@@ -104,6 +103,17 @@ const styles = StyleSheet.create({
         height: normalize(50),
         width: normalize(50),
     },
+    themeButton: {
+        alignSelf: 'flex-start',
+        bottom: '5%',
+        margin: 15,
+        backgroundColor: 'green',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 20,
+        height: 20,
+        borderRadius: 25,
+      },
     Result: {
         fontSize: normalize(50),
         fontWeight: '700',
@@ -123,7 +133,7 @@ const styles = StyleSheet.create({
     },
     Button: {
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         minWidth: '25%',
         minHeight: '18%',
         flex: 2,
@@ -176,4 +186,4 @@ const styles = StyleSheet.create({
     //     fontWeight: '700'
     // },
 });
-export default Calculator;
+export default Calcu;

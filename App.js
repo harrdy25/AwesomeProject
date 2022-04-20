@@ -16,6 +16,8 @@ import CloseFriends from './src/screen/CloseFriends'
 import Followers from './src/screen/Followers'
 import InstaComments from './src/screen/InstaComments'
 import InstaMessage from './src/screen/InstaMessage'
+import BMICalculator from './src/screen/BMICalculator'
+import BMI from './src/screen/BMI'
 
 
 export default function App() {
@@ -27,7 +29,7 @@ export default function App() {
         {/* <ComponenFunction /> */}
         {/* <InstaHomePage /> */}
         {/* <InstagramProfile /> */}
-        <Calculator />
+        {/* <Calculator /> */}
         {/* <InstaChat /> */}
         {/* <ChatDetails /> */}
         {/* <Insights /> */}
@@ -36,6 +38,8 @@ export default function App() {
         {/* <Followers /> */}
         {/* <InstaComments /> */}
         {/* <InstaMessage /> */}
+        {/* <BMICalculator /> */}
+        <BMI />
     </View>
   )
 };
