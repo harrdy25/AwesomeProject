@@ -33,7 +33,7 @@ class BMI extends Component {
             this.setState({ BmiResult: 'Overweight' })
         }
         else if (result >= 30) {
-            this.setState({ BmiResult: 'Obese' })
+            this.setState({ BmiResult: 'Obesity' })
         }
         else {
             alert('Incorrect Input!');
@@ -77,6 +77,26 @@ class BMI extends Component {
                             onChangeText={this.handleWeight}
                         />
                     </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
+                        <Text style={styles.Weight}>Gender</Text>
+                        <Text style={styles.Weight}>Age</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
+                        <Text style={styles.Kilograms}>Sex</Text>
+                        <Text style={styles.Kilograms}>Years</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                        <TextInput
+                            style={styles.Input}
+                            keyboardType="numeric"
+                            onChangeText={this.handleHeight}
+                        />
+                        <TextInput
+                            style={styles.Input}
+                            keyboardType="numeric"
+                            onChangeText={this.handleWeight}
+                        />
+                    </View>
                     <TouchableOpacity
                         style={styles.SubmitButton}
                         onPress={
@@ -87,9 +107,38 @@ class BMI extends Component {
                     <View style={styles.OutputBox}>
                         <Text style={styles.Output}>{this.state.bmi}</Text>
                     </View>
-                    <View style={ this.state.BmiResult === 'Normal weight' ?  styles.OutputBoxRed : styles.OutputBox}>
+                    <View style={this.state.BmiResult === 'Normal weight' ? styles.OutputBoxRed : styles.OutputBox
+                        && this.state.BmiResult === 'Underweight' ? styles.OutputBoxGreen : styles.OutputBox
+                            && this.state.BmiResult === 'Overweight' ? styles.OutputBoxYellow : styles.OutputBox
+                                && this.state.BmiResult === 'Obesity' ? styles.OutputBoxOrange : styles.OutputBox}>
                         <Text style={styles.ResultText}>{this.state.BmiResult}</Text>
                     </View>
+                    <View style={{ flexDirection: 'row', marginTop: normalize(20) }}>
+                        <View style={{ borderColor: 'red', borderWidth: normalize(10), width: '25%' }} />
+                        <View style={{ borderColor: 'green', borderWidth: normalize(10), width: '25%' }} />
+                        <View style={{ borderColor: colors.appBlue, borderWidth: normalize(10), width: '25%' }} />
+                        <View style={{ borderColor: 'orange', borderWidth: normalize(10), width: '25%' }} />
+                    </View>
+                    {this.state.BmiResult === 'Normal weight' &&
+                        <View>
+                            <Image style={styles.IconRed} source={images.IMG_UpArrow_PNG} />
+                        </View>
+                    }
+                    {this.state.BmiResult === 'Underweight' &&
+                        <View>
+                            <Image style={styles.IconGreen} source={images.IMG_UpArrow_PNG} />
+                        </View>
+                    }
+                    {this.state.BmiResult === 'Overweight' &&
+                        <View>
+                            <Image style={styles.IconSky} source={images.IMG_UpArrow_PNG} />
+                        </View>
+                    }
+                    {this.state.BmiResult === 'Obesity' &&
+                        <View>
+                            <Image style={styles.IconOrange} source={images.IMG_UpArrow_PNG} />
+                        </View>
+                    }                   
                 </View>
             </SafeAreaView>
         )
@@ -189,7 +238,7 @@ const styles = StyleSheet.create({
     ResultText: {
         textAlign: "center",
         fontSize: normalize(30),
-        color: 'blue',
+        color: 'black',
         fontWeight: '700',
         padding: normalize(10),
         alignSelf: 'center'
@@ -201,8 +250,6 @@ const styles = StyleSheet.create({
         borderWidth: normalize(10),
         alignSelf: 'center',
         margin: normalize(5),
-        borderLeftColor: colors.appBlue,
-        borderRightColor: colors.appBlue
     },
     OutputBoxRed: {
         height: 75,
@@ -211,7 +258,61 @@ const styles = StyleSheet.create({
         borderWidth: normalize(10),
         alignSelf: 'center',
         margin: normalize(5),
-        borderTopColor: colors.red,
-        borderRightColor: colors.red
-    }
+        borderColor: 'red'
+    },
+    OutputBoxGreen: {
+        height: 75,
+        width: 250,
+        borderRadius: normalize(100),
+        borderWidth: normalize(10),
+        alignSelf: 'center',
+        margin: normalize(5),
+        borderColor: 'green'
+    },
+    OutputBoxYellow: {
+        height: 75,
+        width: 250,
+        borderRadius: normalize(100),
+        borderWidth: normalize(10),
+        alignSelf: 'center',
+        margin: normalize(5),
+        borderColor: colors.appBlue
+    },
+    OutputBoxOrange: {
+        height: 75,
+        width: 250,
+        borderRadius: normalize(100),
+        borderWidth: normalize(10),
+        alignSelf: 'center',
+        margin: normalize(5),
+        borderColor: 'orange'
+    },
+    IconRed: {
+        height: 50,
+        width: 50,
+        tintColor: 'red',
+        alignSelf: 'flex-start',
+        marginLeft: normalize(18)
+    },
+    IconGreen: {
+        height: 50,
+        width: 50,
+        tintColor: 'green',
+        alignSelf: 'center',
+        marginRight: normalize(100)
+    },
+    IconSky: {
+        height: 50,
+        width: 50,
+        tintColor: colors.appBlue,
+        alignSelf: 'center',
+        marginLeft: normalize(100)
+    },
+    IconOrange: {
+        height: 50,
+        width: 50,
+        tintColor: 'orange',
+        alignSelf: 'flex-end',
+        marginRight: normalize(18)
+    },
 })

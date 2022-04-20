@@ -63,5 +63,6 @@ export const images = {
     IMG_UpDownArrow_Png: require('./UpDown.png'),
     IMG_Hastag_Png: require('./Hastag.png'),
     IMG_FILTER: require('./Filter.png'),
+    IMG_UpArrow_PNG: require('./UpArrow.png'),
 
 };
