@@ -18,6 +18,7 @@ import InstaComments from './src/screen/InstaComments'
 import InstaMessage from './src/screen/InstaMessage'
 import BMICalculatorFunction from './src/screen/BMICalculatorFunction'
 import BMIClassBased from './src/screen/BMIClassBased'
+import GSTCalculator from './src/screen/GSTCalculator'
 
 
 export default function App() {
@@ -38,8 +39,9 @@ export default function App() {
         {/* <Followers /> */}
         {/* <InstaComments /> */}
         {/* <InstaMessage /> */}
-        <BMICalculatorFunction />
+        {/* <BMICalculatorFunction /> */}
         {/* <BMIClassBased /> */}
+        <GSTCalculator />
     </View>
   )
 };
