@@ -10,6 +10,7 @@ function GSTCalculator() {
     const [amount, setAmount] = useState('');
     const [gst, setGst] = useState('');
     const [gstAmount, setGstAmount] = useState('');
+    const [show, setShow] = useState(0);
 
     const handleAmount = (text) => {
         setAmount(text)
@@ -27,13 +28,7 @@ function GSTCalculator() {
 
     const GST = (gst / 2).toFixed(2)
 
-    const GSTAmount = (gstAmount / 2).toFixed(2);
-
-    const RemoveGST = () => {
-        setGst('')
-        setGstAmount('');
-        setAmount('')
-    }
+    const GSTAmount = (gstAmount / 2).toFixed(2);  
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '' }}>
@@ -63,50 +58,56 @@ function GSTCalculator() {
                         }}
                     />
                 </View>
-                <TouchableOpacity style={styles.CalculateBox} onPress={() => calculate(amount, gst)}>
+                <TouchableOpacity style={styles.CalculateBox} onPress={() => {
+                    calculate(amount, gst)
+                    setShow(1)
+                }}>
                     <Text style={styles.CalculateGst}>Calculate GST</Text>
                 </TouchableOpacity>
 
                 <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
-
-                <View style={{ flexDirection: 'row', margin: normalize(10), }}>
-                    <Text style={styles.Amount}>Net Amount(₹)</Text>
-                    <View style={styles.OutputBox}>
-                        <Text style={styles.Output}>{amount}</Text>
-                    </View>
-                </View>
-                <View style={{ flexDirection: 'row', margin: normalize(10), }}>
-                    <Text style={styles.GSTRate}>GST Amount(₹)</Text>
-                    <View style={styles.OutputBox}>
-                        <Text style={styles.Output}>{gstAmount}</Text>
-                    </View>
-                </View>
-                <View style={{ flexDirection: 'row', margin: normalize(10) }}>
-                    <Text style={styles.GSTRate}>Total Amount(₹)</Text>
-                    <View style={styles.OutputBox}>
-                        <Text style={styles.Output}>{GrossAmount}</Text>
-                    </View>
-                </View>
-                <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
-                <View style={{ flexDirection: 'row', margin: normalize(10), }}>
-                    <Text style={styles.Amount}>CGST</Text>
-                    <Text style={styles.Amount}>{GST}%</Text>
-                    <View style={styles.OutputBox}>
-                        <Text style={styles.Output}>{GSTAmount}</Text>
-                    </View>
-                </View>
-                <View style={{ flexDirection: 'row', margin: normalize(10), }}>
-                    <Text style={styles.GSTRate}>SGST</Text>
-                    <Text style={styles.Amount}>{GST}%</Text>
-                    <View style={styles.OutputBox}>
-                        <Text style={styles.Output}>{GSTAmount}</Text>
-                    </View>
-                </View>
-                <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
-                <Text style={styles.ThankYou}>-: Thank You :-</Text>
-                <TouchableOpacity style={styles.CalculateBox} onPress={() => RemoveGST()}>
-                    <Text style={styles.CalculateGst}>Remove GST</Text>
-                </TouchableOpacity>
+                {show === 1 &&
+                    <>
+                        <View style={{ flexDirection: 'row', margin: normalize(10), }}>
+                            <Text style={styles.Amount}>Net Amount(₹)</Text>
+                            <View style={styles.OutputBox}>
+                                <Text style={styles.Output}>{amount}</Text>
+                            </View>
+                        </View>
+                        <View style={{ flexDirection: 'row', margin: normalize(10), }}>
+                            <Text style={styles.GSTRate}>GST Amount(₹)</Text>
+                            <View style={styles.OutputBox}>
+                                <Text style={styles.Output}>{gstAmount}</Text>
+                            </View>
+                        </View>
+                        <View style={{ flexDirection: 'row', margin: normalize(10) }}>
+                            <Text style={styles.GSTRate}>Total Amount(₹)</Text>
+                            <View style={styles.OutputBox}>
+                                <Text style={styles.Output}>{GrossAmount}</Text>
+                            </View>
+                        </View>
+                        <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
+                        <View style={{ flexDirection: 'row', margin: normalize(10), }}>
+                            <Text style={styles.Amount}>CGST</Text>
+                            <Text style={styles.Amount}>{GST}%</Text>
+                            <View style={styles.OutputBox}>
+                                <Text style={styles.Output}>{GSTAmount}</Text>
+                            </View>
+                        </View>
+                        <View style={{ flexDirection: 'row', margin: normalize(10), }}>
+                            <Text style={styles.GSTRate}>SGST</Text>
+                            <Text style={styles.Amount}>{GST}%</Text>
+                            <View style={styles.OutputBox}>
+                                <Text style={styles.Output}>{GSTAmount}</Text>
+                            </View>
+                        </View>
+                        <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
+                        <Text style={styles.ThankYou}>-: Thank You :-</Text>
+                        <TouchableOpacity style={styles.CalculateBox} onPress={() => setShow(0)}>
+                            <Text style={styles.CalculateGst}>Remove GST</Text>
+                        </TouchableOpacity>
+                    </>
+                }
             </View>
         </SafeAreaView>
     );
