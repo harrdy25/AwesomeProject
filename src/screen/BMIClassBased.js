@@ -4,7 +4,7 @@ import { images } from '../assets/images'
 import colors from '../theme/colors'
 import { normalize } from '../utils'
 
-class BMI extends Component {
+class BMIClassBased extends Component {
     state = {
         height: '',
         weight: '',
@@ -20,7 +20,7 @@ class BMI extends Component {
     calculate = (height, weight) => {
         //calculation
         var result = (parseFloat(weight) * 10000) / (parseFloat(height) * parseFloat(height));
-        result = result.toFixed(2);
+        result = result.toFixed(2)
         //display result
         this.setState({ bmi: result })
         if (result < 18.5) {
@@ -88,13 +88,9 @@ class BMI extends Component {
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
                         <TextInput
                             style={styles.Input}
-                            keyboardType="numeric"
-                            onChangeText={this.handleHeight}
                         />
                         <TextInput
                             style={styles.Input}
-                            keyboardType="numeric"
-                            onChangeText={this.handleWeight}
                         />
                     </View>
                     <TouchableOpacity
@@ -107,8 +103,8 @@ class BMI extends Component {
                     <View style={styles.OutputBox}>
                         <Text style={styles.Output}>{this.state.bmi}</Text>
                     </View>
-                    <View style={this.state.BmiResult === 'Normal weight' ? styles.OutputBoxRed : styles.OutputBox
-                        && this.state.BmiResult === 'Underweight' ? styles.OutputBoxGreen : styles.OutputBox
+                    <View style={this.state.BmiResult === 'Underweight' ? styles.OutputBoxRed : styles.OutputBox
+                        && this.state.BmiResult === 'Normal weight' ? styles.OutputBoxGreen : styles.OutputBox
                             && this.state.BmiResult === 'Overweight' ? styles.OutputBoxYellow : styles.OutputBox
                                 && this.state.BmiResult === 'Obesity' ? styles.OutputBoxOrange : styles.OutputBox}>
                         <Text style={styles.ResultText}>{this.state.BmiResult}</Text>
@@ -119,12 +115,12 @@ class BMI extends Component {
                         <View style={{ borderColor: colors.appBlue, borderWidth: normalize(10), width: '25%' }} />
                         <View style={{ borderColor: 'orange', borderWidth: normalize(10), width: '25%' }} />
                     </View>
-                    {this.state.BmiResult === 'Normal weight' &&
+                    {this.state.BmiResult === 'Underweight' &&
                         <View>
                             <Image style={styles.IconRed} source={images.IMG_UpArrow_PNG} />
                         </View>
                     }
-                    {this.state.BmiResult === 'Underweight' &&
+                    {this.state.BmiResult === 'Normal weight' &&
                         <View>
                             <Image style={styles.IconGreen} source={images.IMG_UpArrow_PNG} />
                         </View>
@@ -144,7 +140,7 @@ class BMI extends Component {
         )
     }
 }
-export default BMI;
+export default BMIClassBased;
 const styles = StyleSheet.create({
     Card: {
         margin: normalize(5),
