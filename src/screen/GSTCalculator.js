@@ -28,7 +28,7 @@ function GSTCalculator() {
 
     const GST = (gst / 2).toFixed(2)
 
-    const GSTAmount = (gstAmount / 2).toFixed(2);  
+    const GSTAmount = (gstAmount / 2).toFixed(2);    
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '' }}>
@@ -103,7 +103,9 @@ function GSTCalculator() {
                         </View>
                         <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
                         <Text style={styles.ThankYou}>-: Thank You :-</Text>
-                        <TouchableOpacity style={styles.CalculateBox} onPress={() => setShow(0)}>
+                        <TouchableOpacity style={styles.CalculateBox} onPress={() => {
+                            setShow(0);
+                            }}>
                             <Text style={styles.CalculateGst}>Remove GST</Text>
                         </TouchableOpacity>
                     </>

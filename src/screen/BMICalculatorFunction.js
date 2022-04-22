@@ -1,9 +1,9 @@
-import { View, Text, SafeAreaView, Image, StyleSheet, TextInput } from 'react-native'
+import { View, Text, SafeAreaView, Image, StyleSheet, TextInput, Button } from 'react-native'
 import React, { useState } from 'react'
 import { images } from '../assets/images';
 import { normalize } from '../utils';
 import colors from '../theme/colors';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Dropdown } from 'react-native-element-dropdown';
 
 const data = [
@@ -44,153 +44,184 @@ function BMICalculator() {
   }
 
   const calculate = (height, weight) => {
-    var count = (parseFloat(weight) * 10000) / (parseFloat(height) * parseFloat(height));
+    let count = (parseFloat(weight) * 10000) / (parseFloat(height) * parseFloat(height));
     count = count.toFixed(2);
-    setResult(count)
+    setResult(count);
 
-    if (result < 18.5) {
-      setBmiResult('Underweight')
-    } else if (result >= 18.5 && result < 25) {
-      setBmiResult('Normal Weight')
-    } else if (result >= 25 && result < 30) {
-      setBmiResult('Overweight')
-    } else if (result >= 30) {
-      setBmiResult('Obesity')
-    } else {
+    if (count < 18.5) {
+      setBmiResult('Underweight')  // 180 * 50
+    }
+    else if (count >= 18.5 && count < 25) {
+      setBmiResult('Normal Weight') // 180 * 80
+    }
+    else if (count >= 25 && count < 30) {
+      setBmiResult('Overweight') // 180 * 90
+    }
+    else if (count >= 30) {
+      setBmiResult('Obesity') // 180 * 99
+    }
+    else {
       alert('Incorrect Input!');
       setBmiResult('')
     }
+  };
+
+  const ClearAll = () => {
+    setBmiResult('');
+    setResult('');
   }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View>
-        <View style={styles.Card}>
-          <Image style={styles.Logo} source={images.IMG_React_Png} />
-          <Text style={styles.TitleName}>BMI Calculator</Text>
-        </View>
-        <View style={{ borderColor: '#004b93', borderWidth: normalize(2), marginHorizontal: normalize(5) }} />
-        <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
-          <Text style={styles.Weight}>Height</Text>
-          <Text style={styles.Weight}>Weight</Text>
-        </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Text style={styles.Kilograms}>Height (cm)</Text>
-          <Text style={styles.Kilograms}>Weight(kg)</Text>
-        </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <ScrollView>
+        <View>
+          <View style={styles.Card}>
+            <Image style={styles.Logo} source={images.IMG_React_Png} />
+            <Text style={styles.TitleName}>BMI Calculator</Text>
+          </View>
+          <View style={{ borderColor: '#004b93', borderWidth: normalize(2), marginHorizontal: normalize(5) }} />
+          <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
+            <Text style={styles.Weight}>Height</Text>
+            <Text style={styles.Weight}>Weight</Text>
+          </View>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <Text style={styles.Kilograms}>Height (cm)</Text>
+            <Text style={styles.Kilograms}>Weight(kg)</Text>
+          </View>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <TextInput
+              style={styles.Input}
+              fontWeight={'600'}
+              onChangeText={(cm) => {
+                handleHeight(cm)
+              }}
+            />
+            <TextInput
+              style={styles.Input}
+              fontWeight={'600'}
+              onChangeText={(kg) => {
+                handleWeight(kg)
+              }}
+            />
+          </View>
+          <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={[styles.Height, { flex: 1 }]}>Age</Text>
+            <Text style={[styles.Kilograms, { alignSelf: 'center' }]}>ages: 2 - 120</Text>
+          </View>
           <TextInput
-            style={styles.Input}
+            style={styles.InputAge}
+            keyboardType="numeric"
             fontWeight={'600'}
-            onChangeText={(cm) => {
-              handleHeight(cm)
-            }}
           />
-          <TextInput
-            style={styles.Input}
-            fontWeight={'600'}
-            onChangeText={(kg) => {
-              handleWeight(kg)
-            }}
-          />
-        </View>
-        <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
-        <View style={{ flexDirection: 'row' }}>
-          <Text style={[styles.Height, { flex: 1 }]}>Age</Text>
-          <Text style={[styles.Kilograms, { alignSelf: 'center' }]}>ages: 2 - 120</Text>
-        </View>
-        <TextInput
-          style={styles.InputAge}
-          keyboardType="numeric"
-          fontWeight={'600'}
-        />
 
-        <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
-        <Text style={styles.Height}>Gender(Sex)</Text>
-        <View style={{ marginBottom: normalize(10), marginHorizontal: normalize(10) }}>
-          <Dropdown
-            style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            iconStyle={styles.iconStyle}
-            data={data}
-            maxHeight={150}
-            labelField="label"
-            valueField="value"
-            placeholder={!isFocus ? 'Select Gender' : '...'}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
-            onChange={item => {
-              setValue(item.label);
-              setIsFocus(false);
-            }}
-          />
+          <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
+          <Text style={styles.Height}>Gender(Sex)</Text>
+          <View style={{ marginBottom: normalize(10), marginHorizontal: normalize(10) }}>
+            <Dropdown
+              style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              iconStyle={styles.iconStyle}
+              data={data}
+              maxHeight={150}
+              labelField="label"
+              valueField="value"
+              placeholder={!isFocus ? 'Select Gender' : '...'}
+              onFocus={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
+              onChange={item => {
+                setValue(item.label);
+                setIsFocus(false);
+              }}
+            />
+          </View>
+          <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
+          <Text style={styles.Height}>Ethnic group (optional)</Text>
+          <View style={{ marginBottom: normalize(10), marginHorizontal: normalize(10) }}>
+            <Dropdown
+              style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              iconStyle={styles.iconStyle}
+              data={Country}
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder={!isFocus ? 'Select Country' : '...'}
+              onFocus={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
+              onChange={item => {
+                setValue(item.label);
+                setIsFocus(false);
+              }}
+            />
+          </View>
+          <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
+
+          <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+            <View style={styles.SubmitButton}>
+              <Button
+                title='Calculate'
+                color={'#FFFFFF'}
+                onPress={() => calculate(height, weight)}
+              />
+            </View>
+            <View style={styles.SubmitButton}>
+              <Button
+                title='Clear All'
+                color={'#FFFFFF'}
+                onPress={() => ClearAll()}
+              />
+            </View>
+
+          </View>
+
+          <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
+          <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: normalize(10) }}>
+            <Text style={styles.BMI}>BMI</Text>
+            <View style={styles.OutputBox}>
+              <Text style={styles.ResultText}>{result}</Text>
+            </View>
+
+            <View style={BmiResult === 'Underweight' ? styles.OutputBoxRed : styles.OutputBox
+              && BmiResult === 'Normal Weight' ? styles.OutputBoxGreen : styles.OutputBox
+                && BmiResult === 'Overweight' ? styles.OutputBoxYellow : styles.OutputBox
+                  && BmiResult === 'Obesity' ? styles.OutputBoxOrange : styles.OutputBox}>
+              <Text style={styles.ResultText}>{BmiResult}</Text>
+            </View>
+
+          </View>
+
+          <View style={{ flexDirection: 'row', marginTop: normalize(10) }}>
+            <View style={{ borderColor: 'red', borderWidth: normalize(10), width: '25%' }} />
+            <View style={{ borderColor: 'green', borderWidth: normalize(10), width: '25%' }} />
+            <View style={{ borderColor: colors.appBlue, borderWidth: normalize(10), width: '25%' }} />
+            <View style={{ borderColor: 'orange', borderWidth: normalize(10), width: '25%' }} />
+          </View>
+
+          {BmiResult === 'Underweight' &&
+            <View>
+              <Image style={styles.IconRed} source={images.IMG_UpArrow_PNG} />
+            </View>
+          }
+          {BmiResult === 'Normal Weight' &&
+            <View>
+              <Image style={styles.IconGreen} source={images.IMG_UpArrow_PNG} />
+            </View>
+          }
+          {BmiResult === 'Overweight' &&
+            <View>
+              <Image style={styles.IconSky} source={images.IMG_UpArrow_PNG} />
+            </View>
+          }
+          {BmiResult === 'Obesity' &&
+            <View>
+              <Image style={styles.IconOrange} source={images.IMG_UpArrow_PNG} />
+            </View>
+          }
         </View>
-        <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
-        <Text style={styles.Height}>Ethnic group (optional)</Text>
-        <View style={{ marginBottom: normalize(10), marginHorizontal: normalize(10) }}>
-          <Dropdown
-            style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            iconStyle={styles.iconStyle}
-            data={Country}
-            maxHeight={300}
-            labelField="label"
-            valueField="value"
-            placeholder={!isFocus ? 'Select Country' : '...'}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
-            onChange={item => {
-              setValue(item.label);
-              setIsFocus(false);
-            }}
-          />
-        </View>
-        <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
-        <TouchableOpacity style={styles.SubmitButton} onPress={() => calculate(height, weight)}>
-          <Text style={styles.SubmitButtonText}> Calculate </Text>
-        </TouchableOpacity>
-        <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
-        <View style={{flexDirection: 'row', alignSelf: 'center', marginTop: normalize(10)}}>
-          <Text style={styles.BMI}>BMI</Text>
-          <View style={styles.OutputBox}>
-            <Text style={styles.ResultText}>{result}</Text>
-          </View>
-          <View style={BmiResult === 'Underweight' ? styles.OutputBoxRed : styles.OutputBox
-            && BmiResult === 'Normal Weight' ? styles.OutputBoxGreen : styles.OutputBox
-              && BmiResult === 'Overweight' ? styles.OutputBoxYellow : styles.OutputBox
-                && BmiResult === 'Obesity' ? styles.OutputBoxOrange : styles.OutputBox}>
-            <Text style={styles.ResultText}>{BmiResult}</Text>
-          </View>
-        </View>
-        <View style={{ flexDirection: 'row', marginTop: normalize(10) }}>
-          <View style={{ borderColor: 'red', borderWidth: normalize(10), width: '25%' }} />
-          <View style={{ borderColor: 'green', borderWidth: normalize(10), width: '25%' }} />
-          <View style={{ borderColor: colors.appBlue, borderWidth: normalize(10), width: '25%' }} />
-          <View style={{ borderColor: 'orange', borderWidth: normalize(10), width: '25%' }} />
-        </View>
-        {BmiResult === 'Underweight' &&
-          <View>
-            <Image style={styles.IconRed} source={images.IMG_UpArrow_PNG} />
-          </View>
-        }
-        {BmiResult === 'Normal Weight' &&
-          <View>
-            <Image style={styles.IconGreen} source={images.IMG_UpArrow_PNG} />
-          </View>
-        }
-        {BmiResult === 'Overweight' &&
-          <View>
-            <Image style={styles.IconSky} source={images.IMG_UpArrow_PNG} />
-          </View>
-        }
-        {BmiResult === 'Obesity' &&
-          <View>
-            <Image style={styles.IconOrange} source={images.IMG_UpArrow_PNG} />
-          </View>
-        }
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -313,10 +344,12 @@ const styles = StyleSheet.create({
     margin: normalize(4),
   },
   SubmitButton: {
+    flexDirection: 'row',
     backgroundColor: '#005eb8',
-    padding: normalize(8),
+    padding: normalize(3),
     margin: normalize(10),
-    borderRadius: normalize(8)
+    borderRadius: normalize(8),
+    justifyContent: 'space-evenly'
   },
   SubmitButtonText: {
     textAlign: "center",
@@ -382,31 +415,29 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     tintColor: 'red',
-    alignSelf: 'flex-start',
-    marginLeft: normalize(18)
+    marginLeft: '5%'
   },
   IconGreen: {
     height: 50,
     width: 50,
     tintColor: 'green',
-    alignSelf: 'center',
-    marginRight: normalize(100)
+    marginLeft: '31%'
   },
   IconSky: {
     height: 50,
     width: 50,
     tintColor: colors.appBlue,
-    alignSelf: 'center',
-    marginLeft: normalize(100)
+    marginLeft: '56%'
+
   },
   IconOrange: {
     height: 50,
     width: 50,
     tintColor: 'orange',
-    alignSelf: 'flex-end',
-    marginRight: normalize(18)
+    marginLeft: '82%'
+
   },
-  BMI:{
+  BMI: {
     fontSize: normalize(25),
     fontWeight: '700',
     alignSelf: 'center'

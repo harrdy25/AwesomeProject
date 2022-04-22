@@ -24,16 +24,16 @@ class BMIClassBased extends Component {
         //display result
         this.setState({ bmi: result })
         if (result < 18.5) {
-            this.setState({ BmiResult: 'Underweight' })
+            this.setState({ BmiResult: 'Underweight' }) // 250 * 75
         }
         else if (result >= 18.5 && result < 25) {
-            this.setState({ BmiResult: 'Normal weight' })
+            this.setState({ BmiResult: 'Normal weight' }) // 180 * 75 
         }
         else if (result >= 25 && result < 30) {
-            this.setState({ BmiResult: 'Overweight' })
+            this.setState({ BmiResult: 'Overweight' }) // 170 * 75
         }
         else if (result >= 30) {
-            this.setState({ BmiResult: 'Obesity' })
+            this.setState({ BmiResult: 'Obesity' }) // 150 * 75
         }
         else {
             alert('Incorrect Input!');

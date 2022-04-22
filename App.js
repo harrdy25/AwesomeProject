@@ -39,9 +39,9 @@ export default function App() {
         {/* <Followers /> */}
         {/* <InstaComments /> */}
         {/* <InstaMessage /> */}
-        {/* <BMICalculatorFunction /> */}
+        <BMICalculatorFunction />
         {/* <BMIClassBased /> */}
-        <GSTCalculator />
+        {/* <GSTCalculator /> */}
     </View>
   )
 };
