@@ -19,32 +19,31 @@ import InstaMessage from './src/screen/InstaMessage'
 import BMICalculatorFunction from './src/screen/BMICalculatorFunction'
 import BMIClassBased from './src/screen/BMIClassBased'
 import GSTCalculator from './src/screen/GSTCalculator'
+import Theme from './src/screen/Theme'
+import AgeCalculator from './src/screen/AgeCalculator'
+import QuestionAnswer from './src/screen/QuestionAnswer'
+import KbcHomePage from './src/screen/KbcHomePage'
 
 
 export default function App() {
   return (
     <View style={{ flex: 1 }}>
-        {/* <ComponentClass /> */}
-        {/* <MedicineData /> */}
-        {/* <Counter /> */}
-        {/* <ComponenFunction /> */}
-        {/* <InstaHomePage /> */}
-        {/* <InstagramProfile /> */}
-        {/* <Calculator /> */}
-        {/* <InstaChat /> */}
-        {/* <ChatDetails /> */}
-        {/* <Insights /> */}
-        {/* <DiscoverPeople /> */}
-        {/* <CloseFriends /> */}
-        {/* <Followers /> */}
-        {/* <InstaComments /> */}
-        {/* <InstaMessage /> */}
-        <BMICalculatorFunction />
-        {/* <BMIClassBased /> */}
-        {/* <GSTCalculator /> */}
+      {/* <GSTCalculator /> */}
+      {/* <InstagramProfile /> */}
+      {/* <Theme /> */}
+      {/* <MedicineData /> */}
+      {/* <ComponentClass /> */}
+      {/* <BMICalculatorFunction /> */}
+      {/* <AgeCalculator /> */}
+      {/* <ComponenFunction /> */}
+      <QuestionAnswer />
+      {/* <KbcHomePage /> */}
+      {/* <InstagramProfile /> */}
+      {/* <InstaHomePage /> */}
+      {/* <ComponenFunction /> */}
     </View>
   )
 };
 const styles = StyleSheet.create({
 
-})
+});

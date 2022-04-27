@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         margin: normalize(5)
     },
     TimeBox: {
-        backgroundColor: colors.blackTransparent,
+        backgroundColor: colors.black1,
         alignSelf: 'center',
         borderRadius: normalize(80)
     },

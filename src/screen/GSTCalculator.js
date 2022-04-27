@@ -24,14 +24,21 @@ function GSTCalculator() {
         count = count.toFixed(2);
         setGstAmount(count);
     }
+
     const GrossAmount = (parseInt(amount) + parseFloat(gstAmount)).toFixed(2);
 
     const GST = (gst / 2).toFixed(2)
 
-    const GSTAmount = (gstAmount / 2).toFixed(2);    
+    const GSTAmount = (gstAmount / 2).toFixed(2);
+
+    const Remove = () => {
+      setGstAmount('');
+      setGst('');
+      setAmount('');
+    }
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '' }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
             <View>
                 <View style={styles.Card}>
                     <Image style={styles.Logo} source={images.IMG_React_Png} />
@@ -44,7 +51,7 @@ function GSTCalculator() {
                         style={styles.Input}
                         placeholder='Enter your amount...'
                         onChangeText={(rupees) => {
-                            handleAmount(rupees);
+                            handleAmount(rupees);                            
                         }}
                     />
                 </View>
@@ -105,6 +112,7 @@ function GSTCalculator() {
                         <Text style={styles.ThankYou}>-: Thank You :-</Text>
                         <TouchableOpacity style={styles.CalculateBox} onPress={() => {
                             setShow(0);
+                            Remove();
                             }}>
                             <Text style={styles.CalculateGst}>Remove GST</Text>
                         </TouchableOpacity>

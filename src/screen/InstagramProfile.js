@@ -8,7 +8,7 @@ import { ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handl
 
 const Post = [
     { id: 1, image: images.IMG_HVK1 },
-    { id: 2, image: images.IMG_HARRDY },
+    { id: 2, image: images.IMG_Shiya },
     { id: 3, image: images.IMG_HVK2 },
     { id: 4, image: images.IMG_HVK3 },
     { id: 5, image: images.IMG_HVK4 },
@@ -22,14 +22,14 @@ const Post = [
 ];
 
 const StoryPost = [
-    { id: 1, image: images.IMG_HARRDY, title: '❤️❤️' },
-    { id: 2, image: images.IMG_HARRDY, title: '🌺 🖤' },
-    { id: 3, image: images.IMG_HARRDY, title: '🙏🏻 👻' },
-    { id: 4, image: images.IMG_HARRDY, title: '🖤 ' },
-    { id: 5, image: images.IMG_HARRDY, title: '🥂' },
-    { id: 6, image: images.IMG_HARRDY, title: '😍 🥰' },
-    { id: 7, image: images.IMG_HARRDY, title: '👩‍💻 🧑‍💻' },
-    { id: 8, image: images.IMG_HARRDY, title: '🖤🖤' },
+    { id: 1, image: images.IMG_Shiya, title: '❤️❤️' },
+    { id: 2, image: images.IMG_Shiya, title: '🌺 🖤' },
+    { id: 3, image: images.IMG_Shiya, title: '🙏🏻 👻' },
+    { id: 4, image: images.IMG_Shiya, title: '🖤 ' },
+    { id: 5, image: images.IMG_Shiya, title: '🥂' },
+    { id: 6, image: images.IMG_Shiya, title: '😍 🥰' },
+    { id: 7, image: images.IMG_Shiya, title: '👩‍💻 🧑‍💻' },
+    { id: 8, image: images.IMG_Shiya, title: '🖤🖤' },
 ];
 const PostPlus = [
     { id: 1, image: images.IMG_Post_Png, title: 'Post' },
@@ -139,7 +139,7 @@ function InstagramProfile({ navigation }) {
             <View style={{ backgroundColor: colors.black }}>
                 <View style={{ flexDirection: 'row', }}>
                     <TouchableOpacity style={{ flexDirection: 'row', flex: 1 }} onPress={() => setModalVisible(true)}>
-                        <Text style={styles.ProfileName}>harrdy25__</Text>
+                        <Text style={styles.ProfileName}>dr._.shiya._.patel._.23</Text>
                         <Image style={styles.Populer} source={images.IMG_InstaPop_Png} />
                         <Image style={styles.DownArrow} source={images.IMG_Down_Arroww} />
                     </TouchableOpacity>
@@ -157,7 +157,7 @@ function InstagramProfile({ navigation }) {
                         <View style={styles.headerContent}>
                             <View style={{ flexDirection: 'row' }}>
                                 <TouchableOpacity>
-                                    <Image style={styles.avatar} source={images.IMG_HARRDY} />
+                                    <Image style={styles.avatar} source={images.IMG_Shiya} />
                                     <Image style={styles.PlusAdd} source={images.IMG_Pulss_Add_png} />
                                 </TouchableOpacity>
                                 <View style={styles.profileDetail}>
@@ -176,7 +176,9 @@ function InstagramProfile({ navigation }) {
                                 </View>
                             </View>
                             <View>
-                                <Text style={styles.name}> ♛HAཞ ཞDIK KUKADIYA🦅</Text>
+                                {/* <Text style={styles.name}> ♛HAཞ ཞDIK KUKADIYA🦅</Text> */}
+                                <Text style={styles.name}> ♛Shiya Patel🦅</Text>
+
                                 <Text style={styles.Personal}>Personal blog</Text>
                                 <Text style={styles.BioCaption}>🧑🏻‍💻Kuku</Text>
                                 <Text style={styles.BioCaption}> मुसाफ़िर🕊 (Jan) = ➋➎</Text>
@@ -408,7 +410,7 @@ const styles = StyleSheet.create({
 
     },
     ProfileName: {
-        fontSize: normalize(25),
+        fontSize: normalize(20),
         fontWeight: '800',
         marginLeft: normalize(10),
         color: colors.white,

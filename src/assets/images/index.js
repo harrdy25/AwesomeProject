@@ -2,10 +2,15 @@ export const images = {
 
     IMG_HARRDY: require('./harrdy.jpeg'),
     IMG_Medical: require("./Medical.png"),
+    IMG_Shiya: require('./shiya.jpeg'),
+
 
     IMG_InstaText_Png: require('./Instagram.png'),
     IMG_InstaPop_Png: require('./InstaPop.png'),
     IMG_FACEBOOK: require('./Facebook.png'),
+    IMG_QUIZBG: require('./quiz.jpeg'),
+    IMG_KBC_LOGO: require('./kbc.jpeg'),
+
     // IMG_HEART: require('./ic_heart.png'),
 
     // HRK
@@ -64,5 +69,14 @@ export const images = {
     IMG_Hastag_Png: require('./Hastag.png'),
     IMG_FILTER: require('./Filter.png'),
     IMG_UpArrow_PNG: require('./UpArrow.png'),
+    IMG_Star_PNG: require('./Star.png'),
+    IMG_Ellips_PNG: require('./Ellips.png'),
+    IMG_Sound_PNG: require('./Sound.png'),
+    IMG_Share_PNG: require('./Share.png'),
+    IMG_Watch_PNG: require('./Watch.png'),
+    IMG_LIGHT_PNG: require('./light.png'),
+    IMG_HALF_PNG: require('./half.png'),
+    IMG_GROUP_PNG: require('./group.png'),
+    IMG_REFRES_PNG: require('./Refres.png'),
 
 };

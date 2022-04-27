@@ -7,14 +7,14 @@ function ComponenFunction() {
 
     const [time, setTime] = useState(new Date());
 
-    useEffect(() => {
-        console.log("hhh");
-        setInterval(() => tick(), 1000)
-    }, [])
+    // useEffect(() => {
+    //     console.log("hhh");
+    //     setInterval(() => tick(), 1000)
+    // }, [])
 
-    const tick = () => {
-        setTime(new Date());
-    };
+    // const tick = () => {
+    //     setTime(new Date());
+    // };
 
     return (
         <SafeAreaView>
@@ -22,7 +22,7 @@ function ComponenFunction() {
                 <Image style={styles.Image} source={{ uri: 'https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2FsbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80' }} />
                 <View style={styles.Container}>
                     <Text style={styles.Time}>{time.toLocaleTimeString()}</Text>
-                    <Text style={styles.Date}>{time.toDateString()}</Text>
+                    {/* <Text style={styles.Date}>{time.toDateString()}</Text> */}
                 </View>
             </View>
         </SafeAreaView>

@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Image, StyleSheet, TextInput, Button } from 'react-native'
+import { View, Text, SafeAreaView, Image, StyleSheet, TextInput, Button, Switch, Appearance, useCallback } from 'react-native'
 import React, { useState } from 'react'
 import { images } from '../assets/images';
 import { normalize } from '../utils';
@@ -30,10 +30,15 @@ function BMICalculator() {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [result, setResult] = useState('');
   const [BmiResult, setBmiResult] = useState('');
+
+  const [theme, setTheme] = useState('');
 
   const handleHeight = (text) => {
     setHeight(text)
@@ -71,6 +76,11 @@ function BMICalculator() {
     setResult('');
   }
 
+  const colorScheme = Appearance.getColorScheme();
+  if (colorScheme === 'dark') {
+    setTheme('dark');
+  }
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
@@ -79,6 +89,17 @@ function BMICalculator() {
             <Image style={styles.Logo} source={images.IMG_React_Png} />
             <Text style={styles.TitleName}>BMI Calculator</Text>
           </View>
+
+          <Switch
+            trackColor={{ false: "#FFFFFF", true: "#1FA1FF" }}
+            thumbColor={isEnabled ? "#FFFFFF" : "#FFFFFF"}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={toggleSwitch}
+            value={isEnabled}
+            alignSelf='flex-end'
+            margin='2%'
+          />
+
           <View style={{ borderColor: '#004b93', borderWidth: normalize(2), marginHorizontal: normalize(5) }} />
           <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
             <Text style={styles.Weight}>Height</Text>
@@ -164,6 +185,7 @@ function BMICalculator() {
               <Button
                 title='Calculate'
                 color={'#FFFFFF'}
+                fontWeight={'600'}
                 onPress={() => calculate(height, weight)}
               />
             </View>
@@ -179,7 +201,7 @@ function BMICalculator() {
 
           <View style={{ borderColor: '#004b93', borderWidth: normalize(1), marginHorizontal: normalize(5) }} />
           <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: normalize(10) }}>
-            <Text style={styles.BMI}>BMI</Text>
+            <Text style={styles.BMI}>BMI =</Text>
             <View style={styles.OutputBox}>
               <Text style={styles.ResultText}>{result}</Text>
             </View>
@@ -361,52 +383,52 @@ const styles = StyleSheet.create({
   // result
 
   ResultText: {
-    textAlign: "center",
     fontSize: normalize(20),
     color: 'black',
     fontWeight: '700',
-    padding: normalize(5),
+    padding: normalize(2),
+    alignSelf: 'center'
   },
   OutputBox: {
-    height: 50,
-    width: 100,
-    borderRadius: normalize(100),
-    borderWidth: normalize(8),
+    height: 38,
+    width: 90,
+    borderRadius: normalize(10),
+    borderWidth: normalize(5),
     alignSelf: 'center',
     margin: normalize(5),
   },
   OutputBoxRed: {
-    height: 50,
-    width: 200,
-    borderRadius: normalize(100),
-    borderWidth: normalize(8),
+    height: 40,
+    width: 180,
+    borderRadius: normalize(10),
+    borderWidth: normalize(5),
     alignSelf: 'center',
     margin: normalize(5),
     borderColor: 'red'
   },
   OutputBoxGreen: {
-    height: 50,
-    width: 200,
-    borderRadius: normalize(100),
-    borderWidth: normalize(8),
+    height: 40,
+    width: 180,
+    borderRadius: normalize(10),
+    borderWidth: normalize(5),
     alignSelf: 'center',
     margin: normalize(5),
     borderColor: 'green'
   },
   OutputBoxYellow: {
-    height: 50,
-    width: 200,
-    borderRadius: normalize(100),
-    borderWidth: normalize(8),
+    height: 40,
+    width: 180,
+    borderRadius: normalize(10),
+    borderWidth: normalize(5),
     alignSelf: 'center',
     margin: normalize(5),
     borderColor: colors.appBlue
   },
   OutputBoxOrange: {
-    height: 50,
-    width: 200,
-    borderRadius: normalize(100),
-    borderWidth: normalize(8),
+    height: 40,
+    width: 180,
+    borderRadius: normalize(10),
+    borderWidth: normalize(5),
     alignSelf: 'center',
     margin: normalize(5),
     borderColor: 'orange'
@@ -440,7 +462,7 @@ const styles = StyleSheet.create({
   BMI: {
     fontSize: normalize(25),
     fontWeight: '700',
-    alignSelf: 'center'
+    alignSelf: 'center',
   }
 });
 

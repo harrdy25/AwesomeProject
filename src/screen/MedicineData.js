@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, SafeAreaView, Image, FlatList, TouchableOpacity, Alert, ImageBackground, Touchable } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView, Image, FlatList, TouchableOpacity, Alert,} from 'react-native'
 import { normalize } from '../utils'
 import colors from '../theme/colors';
 import { images } from '../assets/images';
@@ -21,11 +21,13 @@ export default function MedicineData() {
 
     const [deleted, setDeleted] = useState('');
 
-    const Price = Data.filter((item, index) => item.expiry >=2023 && item.price > 300);
+    const Price = Data.filter((item, index) => item.expiry >=2023);
 
     const Sum = Price.reduce((acc, item, index) => acc + parseInt(item.price), 0);
 
     const Qsum = Price.reduce((acc, item, index) => acc + parseInt(item.quantity), 0);
+
+    const Expiry = Data.filter((item, index) => item.expiry < 2020);
 
     const getItem = (item) => {
         Alert.alert(
@@ -45,8 +47,8 @@ export default function MedicineData() {
             <View>
                 <TouchableOpacity style={{ flexDirection: "row", }} onPress={() => getItem(item)}>
                     <Text style={styles.Index}>{index + 1})</Text>
-                    <Text style={[styles.Medicine]}>{item.name}</Text>
-                    <Text style={[styles.Medicine, { textAlign: 'center' }]}>{item.price}</Text>
+                    <Text style={item.expiry < 2020 ? styles.MedicineExpire : styles.Medicine}>{item.name}</Text>
+                    <Text style={[item.expiry < 2020 ? styles.MedicineExpire : styles.Medicine, { textAlign: 'center' }]}>{item.price}</Text>
                     <Text style={[item.expiry < 2020 ? styles.MedicineExpire : styles.Medicine, { textAlign: 'center' }]}>{item.expiry}</Text>
                     <Text style={[ item.quantity < 10 ? styles.MedicineExpire : styles.Medicine, { textAlign: 'center' }]}>{item.quantity}</Text>
                 </TouchableOpacity>
@@ -105,6 +107,13 @@ export default function MedicineData() {
                     <Text style={[styles.Total, { flex: 3, marginRight: normalize(30) }]}>{Qsum}</Text>
                 </View>
                 <View style={{ borderColor: '#515151', borderBottomWidth: normalize(2), marginVertical: normalize(5) }} />
+                <View>
+                    <FlatList
+                    data={Expiry}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    />
+                </View>
             </View>
         </SafeAreaView>
     )
