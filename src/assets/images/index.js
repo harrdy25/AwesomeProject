@@ -78,5 +78,6 @@ export const images = {
     IMG_HALF_PNG: require('./half.png'),
     IMG_GROUP_PNG: require('./group.png'),
     IMG_REFRES_PNG: require('./Refres.png'),
+    IMG_CALLING_PNG: require('./Calling.png'),
 
 };

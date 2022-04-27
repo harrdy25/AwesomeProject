@@ -8,7 +8,7 @@ const LifLine = [
     { id: 1, icon: images.IMG_HALF_PNG },
     { id: 2, icon: images.IMG_GROUP_PNG },
     { id: 3, icon: images.IMG_REFRES_PNG },
-    { id: 4, icon: images.IMG_LIGHT_PNG },
+    { id: 4, icon: images.IMG_CALLING_PNG },
 ];
 const QusAns = [
     { id: 1, text: 'The Battle of Plassey was fought in', a: '1757', b: '1782', c: '1748', d: '1764' }, //A
