@@ -7,14 +7,14 @@ function ComponenFunction() {
 
     const [time, setTime] = useState(new Date());
 
-    // useEffect(() => {
-    //     console.log("hhh");
-    //     setInterval(() => tick(), 1000)
-    // }, [])
+    useEffect(() => {
+        console.log("hhh");
+        setInterval(() => tick(), 1000)
+    }, [])
 
-    // const tick = () => {
-    //     setTime(new Date());
-    // };
+    const tick = () => {
+        setTime(new Date());
+    };
 
     return (
         <SafeAreaView>

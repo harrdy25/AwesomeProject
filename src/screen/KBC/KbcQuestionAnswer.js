@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView, Image, StyleSheet, ImageBackground, TouchableOpacity, FlatList } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, SafeAreaView, Image, StyleSheet, ImageBackground, TouchableOpacity, FlatList, ScrollView } from 'react-native'
+import React, { useState, useEffect } from 'react'
 import { images } from '../../assets/images'
 import { normalize } from '../../utils'
 import colors from '../../theme/colors'
@@ -31,6 +31,18 @@ const QusAns = [
 function KbcQuestionAnswer() {
 
     const [select, setSelect] = useState(0);
+
+    const [questionIndex, setQuestionIndex] = useState(0);
+    const [showNext, setShowNext] = useState(false);
+    const [time, setTime] = useState(new Date());
+
+    useEffect(() => {
+        setInterval(() => tick(), 1000);
+    }, [])
+
+    const tick = () => {
+        setTime(new Date());
+    };
 
     const lifelineRender = ({ item }) => (
         <TouchableOpacity style={styles.Box}>
@@ -66,32 +78,36 @@ function KbcQuestionAnswer() {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <View style={{ flex: 1, }}>
-                <View style={styles.Card}>
-                    <Image style={styles.Logo} source={images.IMG_KBC_LOGO} />
-                    <Text style={styles.TitleName}>Question Answer</Text>
+            <ScrollView>
+                <View style={{ flex: 1, }}>
+                    <View style={styles.Card}>
+                        <Image style={styles.Logo} source={images.IMG_KBC_LOGO} />
+                        <Text style={styles.TitleName}>Question Answer</Text>
+                    </View>
+                    <View style={{ alignSelf: 'center', }}>
+                        <Text style={time.getSeconds(60) > 30 && time.getSeconds(60) < 50 ? styles.TimeOrange : styles.Time && time.getSeconds(60) > 50 ? styles.TimeRed : styles.Time}>{time.getSeconds(60)}</Text>
+                    </View>
+                    <View style={{ alignItems: 'center' }}>
+                        <FlatList
+                            data={LifLine}
+                            renderItem={lifelineRender}
+                            keyExtractor={item => item.id}
+                            horizontal={true}
+                        />
+                    </View>
+                    <View>
+                        <FlatList
+                            data={QusAns}
+                            renderItem={QuestionRender}
+                            keyExtractor={item => item.id}
+                        />
+                    </View>
+                    <TouchableOpacity style={styles.NextBox} onPress={() => setShowNext()}>
+                        <Text style={styles.PlayAgain}>Next</Text>
+                    </TouchableOpacity>
                 </View>
-
-                <View style={{ marginVertical: normalize(30) }}>
-                    <Image style={styles.WatchIcon} source={images.IMG_Watch_PNG} />
-                </View>
-                <View style={{ alignItems: 'center' }}>
-                    <FlatList
-                        data={LifLine}
-                        renderItem={lifelineRender}
-                        keyExtractor={item => item.id}
-                        horizontal={true}
-                    />
-                </View>
-                <View>
-                    <FlatList
-                        data={QusAns}
-                        renderItem={QuestionRender}
-                        keyExtractor={item => item.id}
-                    />
-                </View>
-            </View>
-        </SafeAreaView>
+            </ScrollView>
+        </SafeAreaView >
     );
 }
 
@@ -126,12 +142,24 @@ const styles = StyleSheet.create({
         width: normalize(50),
         borderRadius: normalize(30),
         margin: normalize(5)
+    },   
+    Time: {
+        fontSize: normalize(40),
+        fontWeight: '700',
+        textAlign: 'center',
+        color: '#6a1b9a',
     },
-    WatchIcon: {
-        width: normalize(60),
-        height: normalize(60),
-        tintColor: '#9b4dcb',
-        alignSelf: 'center'
+    TimeOrange: {
+        fontSize: normalize(40),
+        fontWeight: '700',
+        textAlign: 'center',
+        color: 'orange',
+    },
+    TimeRed: {
+        fontSize: normalize(40),
+        fontWeight: '700',
+        textAlign: 'center',
+        color: 'red',
     },
     Box: {
         borderColor: colors.white,
@@ -204,7 +232,20 @@ const styles = StyleSheet.create({
         elevation: 5,
         zIndex: 1,
     },
-
+    NextBox: {
+        borderColor: colors.white,
+        borderRadius: normalize(10),
+        backgroundColor: '#38006b',
+        margin: normalize(10),
+        marginTop: normalize(50),
+    },
+    PlayAgain: {
+        fontSize: normalize(25),
+        fontWeight: '600',
+        alignSelf: 'center',
+        color: '#FFFFFF',
+        padding: normalize(8)
+    },
 });
 
 export default KbcQuestionAnswer;
