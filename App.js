@@ -21,9 +21,9 @@ import BMIClassBased from './src/screen/BMIClassBased'
 import GSTCalculator from './src/screen/GSTCalculator'
 import Theme from './src/screen/Theme'
 import AgeCalculator from './src/screen/AgeCalculator'
-import QuestionAnswer from './src/screen/QuestionAnswer'
-import KbcHomePage from './src/screen/KbcHomePage'
-
+import KbcHomePage from './src/screen/KBC/KbcHomePage'
+import KbcQuestionAnswer from './src/screen/KBC/KbcQuestionAnswer'
+import KbcResult from './src/screen/KBC/KbcResult'
 
 export default function App() {
   return (
@@ -36,11 +36,9 @@ export default function App() {
       {/* <BMICalculatorFunction /> */}
       {/* <AgeCalculator /> */}
       {/* <ComponenFunction /> */}
-      <QuestionAnswer />
       {/* <KbcHomePage /> */}
-      {/* <InstagramProfile /> */}
-      {/* <InstaHomePage /> */}
-      {/* <ComponenFunction /> */}
+      <KbcQuestionAnswer />
+      {/* <KbcResult /> */}
     </View>
   )
 };

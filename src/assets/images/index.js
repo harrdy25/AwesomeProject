@@ -10,6 +10,8 @@ export const images = {
     IMG_FACEBOOK: require('./Facebook.png'),
     IMG_QUIZBG: require('./quiz.jpeg'),
     IMG_KBC_LOGO: require('./kbc.jpeg'),
+    IMG_TROPHY: require('./Trophy.png'),
+
 
     // IMG_HEART: require('./ic_heart.png'),
 
@@ -79,5 +81,7 @@ export const images = {
     IMG_GROUP_PNG: require('./group.png'),
     IMG_REFRES_PNG: require('./Refres.png'),
     IMG_CALLING_PNG: require('./Calling.png'),
+    IMG_Wrong_PNG: require('./Wrong.png'),
+    IMG_True_PNG: require('./True.png'),
 
 };
