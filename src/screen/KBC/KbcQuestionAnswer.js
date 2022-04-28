@@ -26,8 +26,7 @@ const QusAns = [
     { id: 13, text: 'To which of the republic of Buddha belong?', a: 'Licchavis', b: 'Sakyas', c: 'Mallas', d: 'None of the above' }, //B
     { id: 14, text: 'Tipu sultan was the ruler of', a: 'Hyderabad', b: 'Madurai', c: 'Mysore', d: 'Vijayanagar' }, //C
     { id: 15, text: 'The term yavanika meant', a: 'foreign goods', b: 'dancer', c: 'curtain', d: 'theatre' }, // C
-
-]
+];
 
 function KbcQuestionAnswer() {
 
@@ -39,7 +38,7 @@ function KbcQuestionAnswer() {
         </TouchableOpacity>
     )
 
-    const QuestionRender = ({ item, index }) => (
+    const QuestionRender = ({ item }) => (
         <View>
             <View style={styles.QusBox}>
                 <Text style={styles.Question}>{item.text}</Text>
@@ -67,7 +66,7 @@ function KbcQuestionAnswer() {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <View style={{flex: 1,}}>
+            <View style={{ flex: 1, }}>
                 <View style={styles.Card}>
                     <Image style={styles.Logo} source={images.IMG_KBC_LOGO} />
                     <Text style={styles.TitleName}>Question Answer</Text>
@@ -97,7 +96,7 @@ function KbcQuestionAnswer() {
 }
 
 const styles = StyleSheet.create({
-   
+
     Card: {
         margin: normalize(5),
         borderRadius: normalize(15),
@@ -126,6 +125,7 @@ const styles = StyleSheet.create({
         height: normalize(50),
         width: normalize(50),
         borderRadius: normalize(30),
+        margin: normalize(5)
     },
     WatchIcon: {
         width: normalize(60),

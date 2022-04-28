@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
         height: normalize(50),
         width: normalize(50),
         borderRadius: normalize(30),
+        margin: normalize(5)
     },
     KBCLogo: {
         borderRadius: normalize(200),
