@@ -24,21 +24,16 @@ import AgeCalculator from './src/screen/AgeCalculator'
 import KbcHomePage from './src/screen/KBC/KbcHomePage'
 import KbcQuestionAnswer from './src/screen/KBC/KbcQuestionAnswer'
 import KbcResult from './src/screen/KBC/KbcResult'
+import KbcQuiz from './src/screen/KBC/KbcQuiz'
 
 export default function App() {
   return (
     <View style={{ flex: 1 }}>
-      {/* <GSTCalculator /> */}
-      {/* <InstagramProfile /> */}
-      {/* <Theme /> */}
-      {/* <MedicineData /> */}
-      {/* <ComponentClass /> */}
-      {/* <BMICalculatorFunction /> */}
-      {/* <AgeCalculator /> */}
-      {/* <ComponenFunction /> */}
+   
       {/* <KbcHomePage /> */}
-      <KbcQuestionAnswer />
+      {/* <KbcQuestionAnswer /> */}
       {/* <KbcResult /> */}
+      <KbcQuiz />
     </View>
   )
 };
