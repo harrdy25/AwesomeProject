@@ -74,5 +74,10 @@ export default QuestionData = [
         option: ['Politics', 'philosophy', 'medicine', 'social-life'],
         current: 'philosophy'
     },
+    {
+        question: 'The Uprising of 1857 was described as the first Indian war of Independence by',
+        option: ['S.N. Sen', 'R.C. Mazumdar', 'B.G. Tilak', 'V.D. Savakar'],
+        current: ''
+    }
 
 ]

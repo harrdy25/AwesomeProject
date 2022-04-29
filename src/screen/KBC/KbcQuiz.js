@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet, Image, SafeAreaView, ScrollView, FlatList, TouchableOpacity } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import { View, Text, StyleSheet, Image, SafeAreaView, ScrollView, FlatList, TouchableOpacity, } from 'react-native'
+import React, { useState, useEffect, } from 'react'
 import { images } from '../../assets/images';
 import { normalize } from '../../utils';
 import colors from '../../theme/colors';
@@ -15,9 +15,9 @@ const LifLine = [
 function KbcQuiz() {
 
     const QuestionList = Question;
+    console.log('Question', QuestionList);
 
     const [time, setTime] = useState(new Date());
-    const [select, setSelect] = useState(0);
     const [score, setScore] = useState(0);
 
     const [currentQus, setCurrentQus] = useState(0);
@@ -39,6 +39,9 @@ function KbcQuiz() {
     const renderQuestion = () => {
         return (
             <>
+                <View style={styles.CountBox}>
+                    <Text style={styles.Count}>{currentQus + 1} / 16</Text>
+                </View>
                 <View style={styles.QusBox}>
                     <Text style={styles.Question}>{QuestionList[currentQus].question}</Text>
                 </View>
@@ -49,9 +52,9 @@ function KbcQuiz() {
 
     const renderOption = () => {
         return (
-            QuestionList[currentQus].option.map((o) => {
+            QuestionList[currentQus].option.map((o, index) => {
                 return (
-                    <TouchableOpacity style={[ styles.AnsBox, { flexDirection: 'row',}]} onPress={() => handleValidation(o)}>
+                    <TouchableOpacity style={[styles.AnsBox, { flexDirection: 'row', }]} onPress={() => handleValidation(o)}>
                         <Text style={[styles.Answer,]}>{o}</Text>
                     </TouchableOpacity>
                 )
@@ -67,7 +70,9 @@ function KbcQuiz() {
         return (
             <>
                 <View style={{ borderColor: '#38006b', borderWidth: normalize(2), margin: normalize(5) }} />
-                <TouchableOpacity style={styles.NextBox} onPress={() => handlerNext()}>
+                <TouchableOpacity style={styles.NextBox} onPress={() => {
+                    handlerNext();
+                }}>
                     <Text style={styles.PlayAgain}>Next</Text>
                 </TouchableOpacity>
             </>
@@ -78,7 +83,7 @@ function KbcQuiz() {
         if (selectoption === QuestionList[currentQus].current) {
             setScore(score + 1);
         }
-    }
+    }    
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -102,7 +107,7 @@ function KbcQuiz() {
                     {renderQuestion()}
                     {renderOption()}
                     {renderNext()}
-                    {/* <Text>{score}</Text> */}
+                    {/* <Text style={styles.Score}>{score}</Text> */}
                 </View>
             </View>
         </SafeAreaView >
@@ -172,19 +177,34 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         margin: normalize(5),
     },
+    CountBox: {
+        width: 100,
+        backgroundColor: '#6a1b9a',
+        marginTop: normalize(5),
+        borderRadius: normalize(8),
+        alignSelf: 'center'
+    },
+    Count: {
+        fontSize: normalize(20),
+        fontWeight: '800',
+        textAlign: 'center',
+        color: '#FFFFFF',
+        padding: normalize(5)
+    },
     QusBox: {
         height: normalize(100),
         borderRadius: normalize(15),
         backgroundColor: '#350e55',
         marginHorizontal: normalize(10),
-        marginVertical: normalize(25)
+        marginVertical: normalize(15),
     },
     Question: {
         fontSize: normalize(20),
         fontWeight: '600',
         color: '#FFFFFF',
-        margin: normalize(20),
-        textAlign: 'center',
+        padding: normalize(10),
+        alignSelf: 'center',
+        textAlign: 'center'
     },
     Answer: {
         fontSize: normalize(20),
@@ -194,8 +214,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         flex: 1
     },
-   
-    AnsBox: {       
+
+    AnsBox: {
         marginHorizontal: normalize(30),
         marginVertical: normalize(10),
         borderRadius: normalize(10),
@@ -209,7 +229,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 5,
         zIndex: 1,
-    },   
+    },
     AnsBoxGreen: {
         marginHorizontal: normalize(30),
         marginVertical: normalize(10),
@@ -224,13 +244,13 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 5,
         zIndex: 1,
-    },   
+    },
     NextBox: {
         borderColor: colors.white,
         borderRadius: normalize(10),
         backgroundColor: '#38006b',
         margin: normalize(10),
-        marginTop: normalize(50),
+        marginTop: normalize(20),
     },
     PlayAgain: {
         fontSize: normalize(25),
@@ -239,6 +259,12 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         padding: normalize(8)
     },
+    Score: {
+        fontSize: normalize(20),
+        fontWeight: '700',
+        color: '#9b4dcb',
+        alignSelf: 'center'
+    }
 });
 
 export default KbcQuiz;

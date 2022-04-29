@@ -34,6 +34,7 @@ export default function App() {
       {/* <KbcQuestionAnswer /> */}
       {/* <KbcResult /> */}
       <KbcQuiz />
+      {/* <Calculator /> */}
     </View>
   )
 };
