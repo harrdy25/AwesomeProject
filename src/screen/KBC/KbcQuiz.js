@@ -15,20 +15,27 @@ const LifLine = [
 function KbcQuiz() {
 
     const QuestionList = Question;
-    console.log('Question', QuestionList);
 
-    const [time, setTime] = useState(new Date());
+    const [time, setTime] = useState(60);
     const [score, setScore] = useState(0);
+    const [answer, setAnswer] = useState(false);
 
     const [currentQus, setCurrentQus] = useState(0);
 
     useEffect(() => {
-        setInterval(() => tick(), 1000);
-    }, [])
-
-    const tick = () => {
-        setTime(new Date());
-    };
+        let second = setInterval(() => {
+            if (time > 0) {
+                setTime((time - 1));
+            }
+            if (time < 1) {
+                setCurrentQus(currentQus + 1);
+                setTime(60);
+            }
+        }, 1000)
+        return () => {
+            clearInterval(second);
+        }
+    });
 
     const lifelineRender = ({ item }) => (
         <TouchableOpacity style={styles.Box}>
@@ -40,7 +47,7 @@ function KbcQuiz() {
         return (
             <>
                 <View style={styles.CountBox}>
-                    <Text style={styles.Count}>{currentQus + 1} / 16</Text>
+                    <Text style={styles.Count}>{currentQus + 1} / {QuestionData.length}</Text>
                 </View>
                 <View style={styles.QusBox}>
                     <Text style={styles.Question}>{QuestionList[currentQus].question}</Text>
@@ -54,8 +61,13 @@ function KbcQuiz() {
         return (
             QuestionList[currentQus].option.map((o, index) => {
                 return (
-                    <TouchableOpacity style={[styles.AnsBox, { flexDirection: 'row', }]} onPress={() => handleValidation(o)}>
-                        <Text style={[styles.Answer,]}>{o}</Text>
+                    <TouchableOpacity style={[answer ? styles.AnsBoxGreen : styles.AnsBox, { flexDirection: 'row', }]} onPress={() => {
+                        handleValidation(o);
+                        if (o === QuestionList[currentQus].current) {
+                            setAnswer(true);
+                        }   
+                    }}>
+                        <Text style={[styles.Answer]}>{o}</Text>
                     </TouchableOpacity>
                 )
             })
@@ -63,7 +75,11 @@ function KbcQuiz() {
     }
 
     const handlerNext = () => {
-        setCurrentQus(currentQus + 1);
+        if (currentQus < QuestionData.length - 1) {
+            setCurrentQus(currentQus + 1);
+        } else {
+            setCurrentQus(currentQus);
+        }        
     }
 
     const renderNext = () => {
@@ -72,8 +88,9 @@ function KbcQuiz() {
                 <View style={{ borderColor: '#38006b', borderWidth: normalize(2), margin: normalize(5) }} />
                 <TouchableOpacity style={styles.NextBox} onPress={() => {
                     handlerNext();
+                    setTime(60)
                 }}>
-                    <Text style={styles.PlayAgain}>Next</Text>
+                    <Text style={styles.PlayAgain}>{QuestionData.length > 15 ? 'Next' :  'Submit' }</Text>
                 </TouchableOpacity>
             </>
         )
@@ -83,17 +100,16 @@ function KbcQuiz() {
         if (selectoption === QuestionList[currentQus].current) {
             setScore(score + 1);
         }
-    }    
+    }
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={{ flex: 1, }}>
                 <View style={styles.Card}>
-                    <Image style={styles.Logo} source={images.IMG_KBC_LOGO} />
-                    <Text style={styles.TitleName}>Question Answer</Text>
+                    <Text style={styles.TitleName}>KBC Quiz</Text>
                 </View>
                 <View style={{ alignSelf: 'center', }}>
-                    <Text style={time.getSeconds(60) > 30 && time.getSeconds(60) < 50 ? styles.TimeOrange : styles.Time && time.getSeconds(60) > 50 ? styles.TimeRed : styles.Time}>{time.getSeconds(60)}</Text>
+                    <Text style={time <= 10 ? styles.TimeRed : styles.Time}>{time}</Text>
                 </View>
                 <View style={{ alignItems: 'center' }}>
                     <FlatList
@@ -129,6 +145,8 @@ const styles = StyleSheet.create({
         elevation: 5,
         zIndex: 1,
         flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     TitleName: {
         fontSize: normalize(25),
@@ -136,8 +154,7 @@ const styles = StyleSheet.create({
         color: colors.extraLight,
         alignSelf: 'center',
         textAlign: 'center',
-        flex: 1,
-        marginRight: normalize(25)
+        padding: normalize(15)
     },
     Logo: {
         height: normalize(50),
@@ -192,19 +209,20 @@ const styles = StyleSheet.create({
         padding: normalize(5)
     },
     QusBox: {
-        height: normalize(100),
+        height: normalize(110),
         borderRadius: normalize(15),
         backgroundColor: '#350e55',
         marginHorizontal: normalize(10),
         marginVertical: normalize(15),
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     Question: {
         fontSize: normalize(20),
         fontWeight: '600',
         color: '#FFFFFF',
-        padding: normalize(10),
-        alignSelf: 'center',
-        textAlign: 'center'
+        textAlign: 'center',
+        margin: normalize(5)
     },
     Answer: {
         fontSize: normalize(20),
@@ -235,6 +253,21 @@ const styles = StyleSheet.create({
         marginVertical: normalize(10),
         borderRadius: normalize(10),
         backgroundColor: 'green',
+        shadowColor: colors.black,
+        shadowOffset: {
+            width: 0.5,
+            height: 3,
+        },
+        shadowOpacity: 5,
+        shadowRadius: 2,
+        elevation: 5,
+        zIndex: 1,
+    },
+    AnsBoxGray: {
+        marginHorizontal: normalize(30),
+        marginVertical: normalize(10),
+        borderRadius: normalize(10),
+        backgroundColor: 'gray',
         shadowColor: colors.black,
         shadowOffset: {
             width: 0.5,
