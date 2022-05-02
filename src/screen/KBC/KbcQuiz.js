@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, SafeAreaView, ScrollView, FlatList, TouchableOpacity, } from 'react-native'
+import { View, Text, StyleSheet, Image, SafeAreaView, Alert, FlatList, TouchableOpacity, } from 'react-native'
 import React, { useState, useEffect, } from 'react'
 import { images } from '../../assets/images';
 import { normalize } from '../../utils';
@@ -21,6 +21,7 @@ function KbcQuiz() {
     const [answer, setAnswer] = useState(false);
 
     const [currentQus, setCurrentQus] = useState(0);
+    const [disabled, setDisabled] = useState(false)
 
     useEffect(() => {
         let second = setInterval(() => {
@@ -38,10 +39,19 @@ function KbcQuiz() {
     });
 
     const lifelineRender = ({ item }) => (
-        <TouchableOpacity style={styles.Box}>
+        <TouchableOpacity style={styles.Box} onPress={() => getItem()}>
             <Image style={styles.LifeLineIcon} source={item.icon} />
         </TouchableOpacity>
     )
+
+    const getItem = (item) => {
+        Alert.alert(
+            "LifeLine",
+            "Are you sure you want to Use this Lifeline",
+            [{ text: "Ok" },
+            { text: "No" }]
+        );
+    };
 
     const renderQuestion = () => {
         return (
@@ -61,12 +71,15 @@ function KbcQuiz() {
         return (
             QuestionList[currentQus].option.map((o, index) => {
                 return (
-                    <TouchableOpacity style={[answer ? styles.AnsBoxGreen : styles.AnsBox, { flexDirection: 'row', }]} onPress={() => {
-                        handleValidation(o);
-                        if (o === QuestionList[currentQus].current) {
-                            setAnswer(true);
-                        }   
-                    }}>
+                    <TouchableOpacity style={[answer ? styles.AnsBoxGreen : styles.AnsBox, { flexDirection: 'row', }]}
+                        disabled={disabled}
+                        onPress={() => {
+                            handleValidation(o);
+                            if (o === QuestionList[currentQus].current) {
+                                setAnswer(true)
+                            }
+                            setDisabled(true)
+                        }}>
                         <Text style={[styles.Answer]}>{o}</Text>
                     </TouchableOpacity>
                 )
@@ -79,7 +92,7 @@ function KbcQuiz() {
             setCurrentQus(currentQus + 1);
         } else {
             setCurrentQus(currentQus);
-        }        
+        }
     }
 
     const renderNext = () => {
@@ -88,9 +101,10 @@ function KbcQuiz() {
                 <View style={{ borderColor: '#38006b', borderWidth: normalize(2), margin: normalize(5) }} />
                 <TouchableOpacity style={styles.NextBox} onPress={() => {
                     handlerNext();
-                    setTime(60)
+                    setTime(60);
+                    setDisabled(false)
                 }}>
-                    <Text style={styles.PlayAgain}>{QuestionData.length > 15 ? 'Next' :  'Submit' }</Text>
+                    <Text style={styles.PlayAgain}>{QuestionData.length > 15 ? 'Next' : 'Submit'}</Text>
                 </TouchableOpacity>
             </>
         )

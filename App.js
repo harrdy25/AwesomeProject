@@ -31,7 +31,6 @@ export default function App() {
     <View style={{ flex: 1 }}>
    
       {/* <KbcHomePage /> */}
-      {/* <KbcQuestionAnswer /> */}
       {/* <KbcResult /> */}
       <KbcQuiz />
       {/* <Calculator /> */}

@@ -9,8 +9,8 @@ function KbcHomePage() {
     const [select, setSelect] = useState(0);
 
     return (
-        <SafeAreaView style={{ flex: 1}}>
-            <View style={{ flex: 1,}}>
+        <SafeAreaView style={{ flex: 1 }}>
+            <View style={{ flex: 1, }}>
                 <View style={styles.Card}>
                     <Image style={styles.Logo} source={images.IMG_KBC_LOGO} />
                     <Text style={styles.TitleName}>Kaun Banega Crorepati</Text>
@@ -34,10 +34,18 @@ function KbcHomePage() {
                     <Text style={styles.StartQuiz}>Start Quiz</Text>
                 </TouchableOpacity>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', marginTop: normalize(20) }}>
-                    <Image style={styles.ImageIcon} source={images.IMG_Sound_PNG} />
-                    <Image style={styles.ImageIcon} source={images.IMG_Star_PNG} />
-                    <Image style={styles.ImageIcon} source={images.IMG_Share_PNG} />
-                    <Image style={styles.ImageIcon} source={images.IMG_Ellips_PNG} />
+                    <TouchableOpacity>
+                        <Image style={styles.ImageIcon} source={images.IMG_Sound_PNG} />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Image style={styles.ImageIcon} source={images.IMG_Star_PNG} />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Image style={styles.ImageIcon} source={images.IMG_Share_PNG} />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Image style={styles.ImageIcon} source={images.IMG_Ellips_PNG} />
+                    </TouchableOpacity>
                 </View>
             </View>
         </SafeAreaView>

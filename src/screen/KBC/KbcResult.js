@@ -35,7 +35,7 @@ function KbcResult() {
                     </View>
                     <View style={styles.ScoreBox}>
                         <Text style={styles.ResultScore}>12</Text>
-                        <Text style={styles.ResultScore}>03</Text>
+                        <Text style={styles.ResultScore}>04</Text>
                     </View>
                 </View>
                 <TouchableOpacity style={styles.Box}>
