@@ -95,21 +95,21 @@ function KbcQuiz() {
         }
     }
 
-    const renderNext = () => {
+    const renderNext = () => {       
         return (
             <>
                 <View style={{ borderColor: '#38006b', borderWidth: normalize(2), margin: normalize(5) }} />
                 <TouchableOpacity style={styles.NextBox} onPress={() => {
                     handlerNext();
                     setTime(60);
-                    setDisabled(false)
+                    setDisabled(false);
+                    setAnswer(false)
                 }}>
-                    <Text style={styles.PlayAgain}>{QuestionData.length > 15 ? 'Next' : 'Submit'}</Text>
+                    <Text style={styles.PlayAgain}>{currentQus === 15 ? 'Submit' : 'Next'}</Text>
                 </TouchableOpacity>
             </>
-        )
+        )       
     }
-
     const handleValidation = (selectoption) => {
         if (selectoption === QuestionList[currentQus].current) {
             setScore(score + 1);
