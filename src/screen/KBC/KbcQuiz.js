@@ -6,10 +6,10 @@ import colors from '../../theme/colors';
 import Question from './Question';
 
 const LifLine = [
-    { id: 1, icon: images.IMG_HALF_PNG },
-    { id: 2, icon: images.IMG_GROUP_PNG },
-    { id: 3, icon: images.IMG_REFRES_PNG },
-    { id: 4, icon: images.IMG_CALLING_PNG },
+    { id: 1, icon: images.IMG_HALF_PNG, text: '50:50' },
+    { id: 2, icon: images.IMG_GROUP_PNG, text: 'Audience Poll' },
+    { id: 3, icon: images.IMG_REFRES_PNG, text: 'Switch The Question' },
+    { id: 4, icon: images.IMG_CALLING_PNG, text: 'Phone A Friend' },
 ];
 
 function KbcQuiz() {
@@ -39,14 +39,14 @@ function KbcQuiz() {
     });
 
     const lifelineRender = ({ item }) => (
-        <TouchableOpacity style={styles.Box} onPress={() => getItem()}>
+        <TouchableOpacity style={styles.Box} onPress={() => getItem(item)}>
             <Image style={styles.LifeLineIcon} source={item.icon} />
         </TouchableOpacity>
     )
 
     const getItem = (item) => {
-        Alert.alert(
-            "LifeLine",
+        Alert.alert(            
+            item.text,
             "Are you sure you want to Use this Lifeline",
             [{ text: "Ok" },
             { text: "No" }]
