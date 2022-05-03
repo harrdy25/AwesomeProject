@@ -88,7 +88,7 @@ function KbcQuiz() {
                         onPress={() => {
                             handleValidation(o);
                             setDisabled(true);
-                            setTime(0);
+
                         }}>
                         <Text style={[styles.Answer]}>{o}</Text>
                     </TouchableOpacity>
