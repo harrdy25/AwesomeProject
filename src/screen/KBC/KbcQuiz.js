@@ -79,14 +79,14 @@ function KbcQuiz() {
 
     const renderOption = () => {
         return (
-            QuestionList[currentQus].option.map((o, index) => {
+            QuestionList[currentQus].option.map((o) => {
                 return (
                     <TouchableOpacity style={[answer === o && answer === QuestionList[currentQus].current ? styles.AnsBoxGreen : answer === o
                         && answer !== QuestionList[currentQus].current ? styles.AnsBoxRed : wrongAns === true
                             && o === QuestionList[currentQus].current ? styles.AnsBoxGreen : styles.AnsBox, { flexDirection: 'row', }]}
                         disabled={disabled}
                         onPress={() => {
-                            handleValidation(o, index);
+                            handleValidation(o);
                             setDisabled(true);
                             setTime(0);
                         }}>
