@@ -77,7 +77,7 @@ export default QuestionData = [
     {
         question: 'The Uprising of 1857 was described as the first Indian war of Independence by',
         option: ['S.N. Sen', 'R.C. Mazumdar', 'B.G. Tilak', 'V.D. Savakar'],
-        current: ''
+        current: 'V.D. Savakar'
     }
 
 ]
