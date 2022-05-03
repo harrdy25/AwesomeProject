@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Image, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, Image, StyleSheet, ImageBackground, TouchableOpacity, Button } from 'react-native'
 import React, { useState } from 'react'
 import { images } from '../../assets/images'
 import { normalize } from '../../utils'
@@ -46,7 +46,7 @@ function KbcHomePage() {
                     <TouchableOpacity>
                         <Image style={styles.ImageIcon} source={images.IMG_Ellips_PNG} />
                     </TouchableOpacity>
-                </View>
+                </View>                
             </View>
         </SafeAreaView>
     );
@@ -129,7 +129,8 @@ const styles = StyleSheet.create({
         height: normalize(35),
         width: normalize(35),
         tintColor: '#9c4dcc'
-    }
+    },
+   
 });
 
 export default KbcHomePage;

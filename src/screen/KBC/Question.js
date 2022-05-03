@@ -1,13 +1,23 @@
 export default QuestionData = [
     {
-        question: 'The Battle of Plassey was fought in',
-        option: ['1757', '1782', '1748', '1764'],
-        current: '1757'
+        question: 'Which City located in the state of Gujarat is famous for zari production?',
+        option: ['Ahemdabad', 'Surat', 'Rajkot', 'Bhavangar'],
+        current: 'Surat'
     },
     {
-        question: 'Tripitakas are sacred books of',
-        option: ['Buddhists', 'Hindus', 'Jains', 'None of the above'],
-        current: 'Buddhists'
+        question: 'The first indian satellite launched from soviet Cosmodrome is ',
+        option: ['Bhaskara', 'Bharat', 'Rohini', 'Aryabhatta'],
+        current: 'Aryabhatta'
+    },
+    {
+        question: 'Which Indian Bank launched the Open-for-all Digital ecosystem for MSMEs?',
+        option: ['ICICI Bank', 'State Bank of India', 'HDFC Bank', 'Canra Bank'],
+        current: 'ICICI Bank'
+    },
+    {
+        question: 'Which country recently issued a proposal to ban menthol cigarettes and flavoured cigars?',
+        option: ['India', 'China', 'Uk', 'USA'],
+        current: 'USA'
     },
     {
         question: 'The trident-shaped symbol of Buddhism does not represent',
@@ -63,12 +73,7 @@ export default QuestionData = [
         question: 'Tipu sultan was the ruler of',
         option: ['Hyderabad', 'Madurai', 'Mysore', 'Vijayanagar'],
         current: 'Mysore'
-    },
-    {
-        question: 'The term yavanika meant',
-        option: ['foreign goods', 'dancer', 'curtain', 'theatre'],
-        current: 'curtain'
-    },
+    },    
     {
         question: 'Upnishad are books on',
         option: ['Politics', 'philosophy', 'medicine', 'social-life'],
@@ -78,6 +83,6 @@ export default QuestionData = [
         question: 'The Uprising of 1857 was described as the first Indian war of Independence by',
         option: ['S.N. Sen', 'R.C. Mazumdar', 'B.G. Tilak', 'V.D. Savakar'],
         current: 'V.D. Savakar'
-    }
+    }, 
 
 ]
