@@ -28,23 +28,25 @@ function KbcQuiz() {
     const [screen, setScreen] = useState(0);
 
     useEffect(() => {
-        let second = setInterval(() => {
-            if (time > 0) {
-                setTime((time - 1));
-            }
-            if (time < 1) {
-                if (currentQus < QuestionList.length - 1) {
-                    setCurrentQus(currentQus + 1);
-                    setTime(10);
-                    setDisabled(false);
-                    setWrongAns(false)
-                } else {
-                    setCurrentQus(currentQus);
+        if (screen === 1) {
+            let second = setInterval(() => {
+                if (time > 0) {
+                    setTime((time - 1));
                 }
+                if (time < 1) {
+                    if (currentQus < QuestionList.length - 1) {
+                        setCurrentQus(currentQus + 1);
+                        setTime(10);
+                        setDisabled(false);
+                        setWrongAns(false)
+                    } else {
+                        setCurrentQus(currentQus);
+                    }
+                }
+            }, 1000)
+            return () => {
+                clearInterval(second);
             }
-        }, 1000)
-        return () => {
-            clearInterval(second);
         }
     });
 
